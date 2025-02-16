@@ -7,15 +7,20 @@ public class BasicMovement : MonoBehaviour
     private Rigidbody rb;
 
     private Vector2 moveVector;
+    private Vector2 lookVector;
 
     private float walkSpeed = 5f;
 
     private float sprintSpeed = 25f;
     private bool isSprinting;
 
+    private float jumpForce = 5f;
+
     private bool isGrounded;
-    [SerializeField] private float playerHeigt = 1.5f;
+    private float playerHeigt = 1.6f;
     [SerializeField] private LayerMask whatIsGround;
+
+    private float rotationSpeed;
 
     private void Awake()
     {
@@ -38,13 +43,14 @@ public class BasicMovement : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        transform.Rotate(0, lookVector.x, 0f);
+    }
+
     public void OnWalk(InputAction.CallbackContext context)
     {
-        if (context.performed || context.canceled)
-        {
-            moveVector = context.ReadValue<Vector2>();
-
-        }
+        moveVector = context.ReadValue<Vector2>();
     }
 
     public void OnSprint(InputAction.CallbackContext context)
@@ -58,4 +64,19 @@ public class BasicMovement : MonoBehaviour
             isSprinting = false;
         }
     }
+
+    public void Onjump(InputAction.CallbackContext context)
+    {
+        if (isGrounded)
+            if (context.started)
+            {
+                rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+            }
+    }
+
+    public void OnLook(InputAction.CallbackContext context)
+    {
+        lookVector = context.ReadValue<Vector2>();
+    }
+
 }
