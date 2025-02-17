@@ -20,7 +20,7 @@ public class BasicMovement : MonoBehaviour
     private float playerHeigt = 1.6f;
     [SerializeField] private LayerMask whatIsGround;
 
-    private float rotationSpeed;
+    private float rotationSpeed = 2.2f;
 
     private void Awake()
     {
@@ -45,7 +45,7 @@ public class BasicMovement : MonoBehaviour
 
     private void Update()
     {
-        transform.Rotate(0, lookVector.x, 0f);
+        transform.Rotate(0, lookVector.x * rotationSpeed, 0f);
     }
 
     public void OnWalk(InputAction.CallbackContext context)
