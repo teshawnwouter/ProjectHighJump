@@ -1,3 +1,4 @@
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,7 +21,8 @@ public class BasicMovement : MonoBehaviour
     private float playerHeigt = 1.6f;
     [SerializeField] private LayerMask whatIsGround;
 
-    private float rotationSpeed = 2.2f;
+
+    float rotationspeed = 4f;
 
     private void Awake()
     {
@@ -41,11 +43,18 @@ public class BasicMovement : MonoBehaviour
                 rb.linearVelocity = new Vector3(moveVector.x * sprintSpeed, 0, moveVector.y * sprintSpeed);
             }
         }
+
+        if(rb.linearVelocity != Vector3.zero)
+        {
+            float targetRotation = Mathf.Atan2(moveVector.x,moveVector.y) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
+            Quaternion turning =  Quaternion.Euler(0f,targetRotation,0f);
+            transform.rotation = Quaternion.Lerp(transform.rotation, turning, Time.deltaTime * rotationspeed);
+        }
     }
 
-    private void Update()
+    private void LateUpdate()
     {
-        transform.Rotate(0, lookVector.x * rotationSpeed, 0f);
+        
     }
 
     public void OnWalk(InputAction.CallbackContext context)
