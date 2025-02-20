@@ -45,33 +45,14 @@ public class BasicMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeigt * 0.5f + 0.2f, whatIsGround);
-        if (isGrounded)
-        {
-            if (!isSprinting)
-            {
-                rb.linearVelocity = new Vector3(moveVector.x * walkSpeed, 0, moveVector.y * walkSpeed);
-            }
-            else
-            {
-                rb.linearVelocity = new Vector3(moveVector.x * sprintSpeed, 0, moveVector.y * sprintSpeed);
-            }
-        }
+        Vector3 currentVelocity = rb.linearVelocity;
+        Vector3 targetVelocity = new Vector3(moveVector.x, 0, moveVector.y);
 
-        if ((onWallLeft || onWallRight) && AboveGround())
-        {
-
-        }
-
-        if (rb.linearVelocity != Vector3.zero)
-        {
-            float targetRotation = Mathf.Atan2(moveVector.x, moveVector.y) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
-            Quaternion turning = Quaternion.Euler(0f, targetRotation, 0f);
-            transform.rotation = Quaternion.Lerp(transform.rotation, turning, Time.deltaTime * rotationspeed);
-        }
-
-        if (isOnWall)
-            WallRunMovement();
+        Vector3 VelocityChange = (targetVelocity - currentVelocity);
+        Vector3.ClampMagnitude(VelocityChange, sprintSpeed);
+        targetVelocity *= walkSpeed;
+        targetVelocity = transform.TransformDirection(targetVelocity);
+        rb.AddForce(VelocityChange, ForceMode.VelocityChange);
     }
     #region Inputs
     public void OnWalk(InputAction.CallbackContext context)
