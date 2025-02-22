@@ -46,15 +46,14 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeigt * 0.5f + 0.2f, whatIsGround);
-        SpeedControl();
-
+        Debug.Log(isGrounded);
         if (isGrounded)
         {
             rb.linearDamping = drag;
         }
         else
         {
-            rb.angularDamping = 0;
+            rb.angularDamping = 3;
         }
 
     }
@@ -118,37 +117,11 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded)
             if (context.started)
             {
-                rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
+                //rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
 
                 rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
             }
     }
-
-    //public void OnLook(InputAction.CallbackContext context)
-    //{
-    //    lookVector = context.ReadValue<Vector2>();
-    //}
     #endregion
 
-    private void SpeedControl()
-    {
-        Vector3 quickStop = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
-        if (!isSprinting)
-        {
-            if (quickStop.magnitude > walkSpeed)
-            {
-                Vector3 walkLimit = quickStop.normalized * walkSpeed;
-                rb.linearVelocity = new Vector3(walkLimit.x, rb.linearVelocity.y, walkLimit.z);
-            }
-        }
-        else
-        {
-            if (quickStop.magnitude > sprintSpeed)
-            {
-                Vector3 sprintLimit = quickStop.normalized * sprintSpeed;
-                rb.linearVelocity = new Vector3(sprintLimit.x, rb.linearVelocity.y, sprintLimit.z);
-            }
-        }
-
-    }
 }
