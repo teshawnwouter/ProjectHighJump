@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,20 +9,21 @@ public class PlayerMovement : MonoBehaviour
     //private Vector2 lookVector;
 
     [Header("jump")]
-    private float jumpForce = 12f;
+    private float jumpSpeed = 3f;
+    private float jumpForce = 20f;
     private float airMultiPlier = 0.4f;
 
     [Header("Sprint")]
     private float walkSpeed = 5f;
-    private float sprintSpeed = 25f;
+    private float sprintSpeed = 10f;
     //private float wallRunSpeed = 12f;
     private bool isSprinting;
 
     [Header("Restrictions")]
-    private float drag = 3;
+    private float drag = 5;
 
     [Header("Detections and checks")]
-    private float playerHeigt = 1.6f;
+    private float playerHeigt = 2f;
     private bool isGrounded;
     [SerializeField] private LayerMask whatIsGround;
 
@@ -31,8 +31,13 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
 
     [Header("rotation")]
-    private float rotationSpeed = 4f;
+    private float rotationSpeed = 2f;
     private Transform cameraHolder;
+
+
+    [Header("physics adjustments")]
+    float gravityScale = 5f;
+    
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -46,52 +51,52 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeigt * 0.5f + 0.2f, whatIsGround);
-        Debug.Log(isGrounded);
         if (isGrounded)
         {
             rb.linearDamping = drag;
         }
         else
         {
-            rb.angularDamping = 3;
+            rb.linearDamping = 0;
         }
-
+       
     }
 
     private void FixedUpdate()
     {
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeigt * 0.5f + 0.2f, whatIsGround);
-        Vector3 move = new Vector3(moveVector.x,0,moveVector.y);
+        rb.AddForce(Physics.gravity * (gravityScale - 1) * rb.mass);
+
+        Vector3 move = new Vector3(moveVector.x, 0, moveVector.y);
         move = cameraHolder.forward * move.z + cameraHolder.right * move.x;
         move.y = 0;
         if (isGrounded)
         {
             if (!isSprinting)
             {
-                rb.AddForce(move * walkSpeed * 10, ForceMode.Force);
+                rb.AddForce(move.normalized * walkSpeed * 10, ForceMode.Force);
             }
             else
             {
-                rb.AddForce(move * sprintSpeed * 10, ForceMode.Force);
+                rb.AddForce(move.normalized * sprintSpeed * 10, ForceMode.Force);
             }
         }
         else
         {
             if (!isSprinting)
             {
-                rb.AddForce(move * walkSpeed * airMultiPlier * 10, ForceMode.Force);
+                rb.AddForce(move.normalized * walkSpeed * airMultiPlier * 10, ForceMode.Force);
             }
             else
             {
-                rb.AddForce(move * sprintSpeed * airMultiPlier * 10, ForceMode.Force);
+                rb.AddForce(move.normalized * sprintSpeed * airMultiPlier * 10, ForceMode.Force);
             }
         }
 
-        if(moveVector != Vector2.zero)
+        if (moveVector != Vector2.zero)
         {
             float angle = Mathf.Atan2(moveVector.x, moveVector.y) * Mathf.Rad2Deg + cameraHolder.eulerAngles.y;
             Quaternion rotation = Quaternion.Euler(0, angle, 0);
-            transform.rotation = Quaternion.Lerp(transform.rotation,rotation, rotationSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
         }
     }
     #region Inputs
@@ -117,11 +122,10 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded)
             if (context.started)
             {
-                //rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
+                rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
 
-                rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+                rb.AddForce( transform.up * jumpForce ,ForceMode.Impulse);
             }
     }
     #endregion
-
 }
