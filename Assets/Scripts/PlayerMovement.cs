@@ -6,7 +6,6 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Input Checks")]
     private Vector2 moveVector;
-    //private Vector2 lookVector;
 
     [Header("jump")]
     private float jumpSpeed = 3f;
@@ -16,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Sprint")]
     private float walkSpeed = 5f;
     private float sprintSpeed = 10f;
-    //private float wallRunSpeed = 12f;
+    private float wallRunSpeed;
     private bool isSprinting;
 
     [Header("Restrictions")]
@@ -26,6 +25,12 @@ public class PlayerMovement : MonoBehaviour
     private float playerHeigt = 2f;
     private bool isGrounded;
     [SerializeField] private LayerMask whatIsGround;
+    private float wallDist;
+    private float minJumpHeigt;
+    private RaycastHit wallCheckLeft;
+    private RaycastHit wallCheckRight;
+    private bool wallLeft;
+    private bool wallRight;
 
     [Header("Components")]
     private Rigidbody rb;
@@ -37,7 +42,20 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("physics adjustments")]
     float gravityScale = 5f;
-    
+
+    [Header("SLope")]
+    private float slopeAngle = 40f;
+    private RaycastHit slopeHit;
+    private float slide = 8f;
+    private bool exitSlope;
+
+    [Header("wallRunning")]
+    public LayerMask whatIsWall;
+    private float wallrunForce;
+    private float maxWallRunTime;
+    private float wallRunTime;
+    private bool isWallRunning;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -59,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.linearDamping = 0;
         }
-       
+        WallChecks();
     }
 
     private void FixedUpdate()
@@ -69,6 +87,24 @@ public class PlayerMovement : MonoBehaviour
         Vector3 move = new Vector3(moveVector.x, 0, moveVector.y);
         move = cameraHolder.forward * move.z + cameraHolder.right * move.x;
         move.y = 0;
+
+        if (OnSlope())
+        {
+            if (!isSprinting)
+            {
+                rb.AddForce(GetSlopeDir() * walkSpeed * 10, ForceMode.Force);
+                if(rb.linearVelocity.y > 0)
+                {
+                    rb.AddForce(Vector3.down * slide, ForceMode.Force);
+                }
+            }
+            else
+            {
+                rb.AddForce(GetSlopeDir() * sprintSpeed * 10, ForceMode.Force);
+            }
+        }
+
+        //on Ground
         if (isGrounded)
         {
             if (!isSprinting)
@@ -80,6 +116,7 @@ public class PlayerMovement : MonoBehaviour
                 rb.AddForce(move.normalized * sprintSpeed * 10, ForceMode.Force);
             }
         }
+        //in Air
         else
         {
             if (!isSprinting)
@@ -92,13 +129,89 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        if (isWallRunning)
+        {
+            WallRunning();
+        }
+
         if (moveVector != Vector2.zero)
         {
             float angle = Mathf.Atan2(moveVector.x, moveVector.y) * Mathf.Rad2Deg + cameraHolder.eulerAngles.y;
             Quaternion rotation = Quaternion.Euler(0, angle, 0);
             transform.rotation = Quaternion.Lerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
         }
+            rb.useGravity = !OnSlope();
     }
+
+    #region Slope
+    private bool OnSlope()
+    {
+        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeigt * 0.5f + 0.3f))
+        {
+            float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
+            return angle < slopeAngle && angle != 0;
+        }
+        return false;
+    }
+
+    private Vector3 GetSlopeDir()
+    {
+        return Vector3.ProjectOnPlane(moveVector, slopeHit.normal).normalized;
+    }
+    #endregion
+
+    #region WallRun
+    private void CheckWall()
+    {
+        wallRight = Physics.Raycast(transform.position, Vector3.right, out wallCheckRight, wallDist, whatIsWall);
+        wallLeft = Physics.Raycast(transform.position, Vector3.left, out wallCheckLeft, wallDist, whatIsWall);
+    }
+
+    private bool AboveGround()
+    {
+        return !Physics.Raycast(transform.position,Vector3.down,minJumpHeigt,whatIsGround);
+    }
+
+    private void StartWallRunning()
+    {
+        isWallRunning = true;
+    }
+    private void WallRunning()
+    {
+        rb.useGravity = false;
+
+        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
+        
+        Vector3 wallNormal = wallRight ? wallCheckRight.normal : wallCheckLeft.normal;
+
+        Vector3 wallForward = Vector3.Cross(wallNormal, transform.up);
+
+        rb.AddForce(wallForward * wallrunForce, ForceMode.Force);
+    }
+    private void StopWallRunning()
+    {
+        isWallRunning = false;
+    }
+
+    private void WallChecks()
+    {
+        if((wallLeft || wallRight) && moveVector.y > 0 && AboveGround())
+        {
+            if (!isWallRunning)
+            {
+                StartWallRunning();
+            }
+            else
+            {
+                if (isWallRunning)
+                {
+                    StopWallRunning();
+                }
+            }
+        }
+    }
+    #endregion
+
     #region Inputs
     public void OnWalk(InputAction.CallbackContext context)
     {
@@ -124,8 +237,9 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
 
-                rb.AddForce( transform.up * jumpForce ,ForceMode.Impulse);
+                rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
             }
     }
     #endregion
+
 }
