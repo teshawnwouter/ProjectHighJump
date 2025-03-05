@@ -12,9 +12,9 @@ public class PlayerMovement : MonoBehaviour
     private float airMultiPlier = 0.4f;
 
     [Header("Sprint")]
-    private float walkSpeed = 5f;
-    private float sprintSpeed = 10f;
-    public float wallRunSpeed = 8f;
+    private float walkSpeed = 8f;
+    private float sprintSpeed = 18f;
+    public float wallRunSpeed = 12f;
     private bool isSprinting;
 
     [Header("Restrictions")]
@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
 
     [Header("rotation")]
-    private float rotationSpeed = 2f;
+    private float rotationSpeed = 4f;
     private Transform cameraHolder;
 
 
@@ -131,7 +131,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 float angle = Mathf.Atan2(moveVector.x, moveVector.y) * Mathf.Rad2Deg + cameraHolder.eulerAngles.y;
                 Quaternion rotation = Quaternion.Euler(0, angle, 0);
-                rb.rotation = Quaternion.Lerp(rb.rotation, rotation, rotationSpeed * Time.deltaTime);
+                rb.rotation = Quaternion.Slerp(rb.rotation, rotation, rotationSpeed * Time.deltaTime);
             }
 
         }
