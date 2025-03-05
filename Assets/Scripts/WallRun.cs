@@ -90,10 +90,10 @@ public class WallRun : MonoBehaviour
 
         if (!(wallLeft && playerMovement.moveVector.x > 0) && !(wallRight && playerMovement.moveVector.x < 0))
         {
-            rb.MovePosition(-wallNormal * 100);
+            rb.AddForce(-wallNormal * 100, ForceMode.Force);
         }
 
-        rb.MovePosition(wallForwardDirection * wallRunForce);
+        rb.AddForce(wallForwardDirection * wallRunForce, ForceMode.Force);
         rb.angularVelocity = Vector3.zero;
 
         rb.rotation = Quaternion.LookRotation(wallPos, transform.up);

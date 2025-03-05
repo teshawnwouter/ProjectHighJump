@@ -122,13 +122,17 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (!wallRunning)
+        if (!isGrounded)
+        {
             if (moveVector != Vector2.zero)
             {
                 float angle = Mathf.Atan2(moveVector.x, moveVector.y) * Mathf.Rad2Deg + cameraHolder.eulerAngles.y;
                 Quaternion rotation = Quaternion.Euler(0, angle, 0);
                 rb.rotation = Quaternion.Lerp(rb.rotation, rotation, rotationSpeed * Time.deltaTime);
             }
+
+        }
+
         rb.useGravity = !OnSlope();
     }
 
