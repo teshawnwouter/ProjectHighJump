@@ -12,8 +12,8 @@ public class WallRun : MonoBehaviour
     [Header("detections")]
     private RaycastHit leftWallHit;
     private RaycastHit rightWallHit;
-    private float wallCheckDist = 0.7f;
-    private float minJumpHeigt;
+    private float wallCheckDist = 1f;
+    private float minJumpHeigt = 1.5f;
     private bool wallLeft;
     private bool wallRight;
 
@@ -53,9 +53,10 @@ public class WallRun : MonoBehaviour
 
     private void StateMachine()
     {
-        if ((wallLeft || wallRight) && playerMovement.moveVector.x > 0 && AboveGround())
+        if ((wallLeft || wallRight) && playerMovement.moveVector.y > 0 && AboveGround())
         {
-            StartWallRun();
+            if (!playerMovement.wallRunning)
+                StartWallRun();
         }
         else
         {
@@ -77,9 +78,7 @@ public class WallRun : MonoBehaviour
 
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
 
-        Vector3 wallNormal = wallRight ? leftWallHit.normal : leftWallHit.normal;
-        Vector3 wallPos = wallRight ? leftWallHit.point : leftWallHit.point;
-
+        Vector3 wallNormal = wallRight ? rightWallHit.normal : leftWallHit.normal;
 
         Vector3 wallForwardDirection = Vector3.Cross(wallNormal, transform.up);
 
@@ -88,23 +87,21 @@ public class WallRun : MonoBehaviour
             wallForwardDirection = -wallForwardDirection;
         }
 
-        if (!(wallLeft && playerMovement.moveVector.x > 0) && !(wallRight && playerMovement.moveVector.x < 0))
+        if ((wallLeft && playerMovement.moveVector.x > 0) && (wallRight && playerMovement.moveVector.x < 0))
         {
             rb.AddForce(-wallNormal * 100, ForceMode.Force);
+
         }
 
         rb.AddForce(wallForwardDirection * wallRunForce, ForceMode.Force);
-        rb.angularVelocity = Vector3.zero;
 
-        rb.rotation = Quaternion.LookRotation(wallPos, transform.up);
+        transform.rotation = Quaternion.LookRotation(wallForwardDirection, transform.up);
     }
 
     private void StopWallRun()
     {
         playerMovement.wallRunning = false;
         rb.useGravity = true;
-        rb.angularVelocity = Vector3.zero;
-        rb.linearVelocity = Vector3.zero;
     }
 
 }

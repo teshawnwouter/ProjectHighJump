@@ -44,7 +44,6 @@ public class PlayerMovement : MonoBehaviour
     private float slide = 8f;
     private bool exitSlope;
 
-
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -72,7 +71,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.AddForce(Physics.gravity * (gravityScale) * rb.mass);
+        if (!wallRunning)
+        {
+            rb.AddForce(Physics.gravity * gravityScale * rb.mass);
+
+        }
 
         Vector3 move = new Vector3(moveVector.x, 0, moveVector.y);
         move = cameraHolder.forward * move.z + cameraHolder.right * move.x;
@@ -122,7 +125,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (!isGrounded)
+        if (isGrounded)
         {
             if (moveVector != Vector2.zero)
             {
