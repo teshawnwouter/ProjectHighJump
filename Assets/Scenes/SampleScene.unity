@@ -1240,7 +1240,6 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
-  orientation: {fileID: 1800064971}
 --- !u!1 &650354717
 GameObject:
   m_ObjectHideFlags: 0
