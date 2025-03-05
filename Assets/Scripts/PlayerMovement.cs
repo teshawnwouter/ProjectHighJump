@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;
     [SerializeField] private LayerMask whatIsGround;
     public bool wallRunning;
-    
+
 
     [Header("Components")]
     private Rigidbody rb;
@@ -67,12 +67,12 @@ public class PlayerMovement : MonoBehaviour
             rb.linearDamping = 0;
         }
 
-        
+
     }
 
     private void FixedUpdate()
     {
-        rb.AddForce(Physics.gravity * (gravityScale - 1) * rb.mass);
+        rb.AddForce(Physics.gravity * (gravityScale) * rb.mass);
 
         Vector3 move = new Vector3(moveVector.x, 0, moveVector.y);
         move = cameraHolder.forward * move.z + cameraHolder.right * move.x;
@@ -83,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
             if (!isSprinting)
             {
                 rb.AddForce(GetSlopeDir() * walkSpeed * 10, ForceMode.Force);
-                if(rb.linearVelocity.y > 0)
+                if (rb.linearVelocity.y > 0)
                 {
                     rb.AddForce(Vector3.down * slide, ForceMode.Force);
                 }
@@ -109,23 +109,27 @@ public class PlayerMovement : MonoBehaviour
         //in Air
         else
         {
-            if (!isSprinting)
+            if (!wallRunning)
             {
-                rb.AddForce(move.normalized * walkSpeed * airMultiPlier * 10, ForceMode.Force);
-            }
-            else
-            {
-                rb.AddForce(move.normalized * sprintSpeed * airMultiPlier * 10, ForceMode.Force);
+                if (!isSprinting)
+                {
+                    rb.AddForce(move.normalized * walkSpeed * airMultiPlier * 10, ForceMode.Force);
+                }
+                else
+                {
+                    rb.AddForce(move.normalized * sprintSpeed * airMultiPlier * 10, ForceMode.Force);
+                }
             }
         }
 
-        if (moveVector != Vector2.zero)
-        {
-            float angle = Mathf.Atan2(moveVector.x, moveVector.y) * Mathf.Rad2Deg + cameraHolder.eulerAngles.y;
-            Quaternion rotation = Quaternion.Euler(0, angle, 0);
-            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
-        }
-            rb.useGravity = !OnSlope();
+        if (!wallRunning)
+            if (moveVector != Vector2.zero)
+            {
+                float angle = Mathf.Atan2(moveVector.x, moveVector.y) * Mathf.Rad2Deg + cameraHolder.eulerAngles.y;
+                Quaternion rotation = Quaternion.Euler(0, angle, 0);
+                rb.rotation = Quaternion.Lerp(rb.rotation, rotation, rotationSpeed * Time.deltaTime);
+            }
+        rb.useGravity = !OnSlope();
     }
 
     #region Slope
