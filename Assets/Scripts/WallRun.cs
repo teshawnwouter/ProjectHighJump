@@ -21,7 +21,7 @@ public class WallRun : MonoBehaviour
     private Rigidbody rb;
     private PlayerMovement playerMovement;
 
-    private float turnSpeed = 10000000f;
+    private float turnSpeed = 3f;
 
     private void Start()
     {
@@ -77,30 +77,26 @@ public class WallRun : MonoBehaviour
     }
     private void WallRunning()
     {
-        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
-
         Vector3 wallNormal = wallRight ? rightWallHit.normal : leftWallHit.normal;
 
         Vector3 wallForwardDirection = Vector3.Cross(wallNormal, transform.up);
+
 
         if ((transform.forward - wallForwardDirection).magnitude > (transform.forward - -wallForwardDirection).magnitude)
         {
             wallForwardDirection = -wallForwardDirection;
         }
 
-        rb.AddForce(wallForwardDirection * wallRunForce, ForceMode.Force);
-
         if ((wallLeft && playerMovement.moveVector.x > 0) && (wallRight && playerMovement.moveVector.x < 0))
         {
             rb.AddForce(-wallNormal * 100, ForceMode.Force);
-
         }
 
-        //transform.rotation = Quaternion.LookRotation(wallForwardDirection, transform.up);
+        rb.linearVelocity = wallForwardDirection;
 
-        Quaternion wallcurve = Quaternion.LookRotation(wallForwardDirection, transform.up);
+        rb.AddForce(wallForwardDirection * wallRunForce, ForceMode.Force);
 
-        transform.rotation = Quaternion.Lerp(transform.rotation, wallcurve, turnSpeed);
+        transform.rotation = Quaternion.LookRotation(wallForwardDirection, transform.up);
     }
 
     private void StopWallRun()
