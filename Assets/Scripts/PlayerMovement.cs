@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;
     [SerializeField] private LayerMask whatIsGround;
     public bool wallRunning;
+    public bool isGrappling;
 
 
     [Header("Components")]
