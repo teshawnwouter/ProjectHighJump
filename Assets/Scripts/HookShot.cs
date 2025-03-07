@@ -41,10 +41,15 @@ public class HookShot : MonoBehaviour
 
     private void HookPoint()
     {
+        //Vector2 screenDir = new Vector2();
+
         if(Physics.Raycast(transform.position,transform.forward,out RaycastHit hitInfo, maxDistance, grappleAbleLayer))
         {
             grapplePoint = hitInfo.point;
             CheckOldValue(1000f);
+        }
+        else
+        {
         }
     }
 

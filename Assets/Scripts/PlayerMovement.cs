@@ -33,8 +33,6 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("rotation")]
     private float rotationSpeed = 4f;
-    private Transform cameraHolder;
-
 
     [Header("physics adjustments")]
     float gravityScale = 5f;
@@ -45,10 +43,13 @@ public class PlayerMovement : MonoBehaviour
     private float slide = 8f;
     private bool exitSlope;
 
+    [Header("reffrences")]
+    private CameraRotation cameraRotation;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        cameraHolder = Camera.main.transform;
+        cameraRotation = FindFirstObjectByType<CameraRotation>();
     }
 
     private void Start()
@@ -79,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         Vector3 move = new Vector3(moveVector.x, 0, moveVector.y);
-        move = cameraHolder.forward * move.z + cameraHolder.right * move.x;
+        //move = cameraHolder.forward * move.z + cameraHolder.right * move.x;
         move.y = 0;
 
         if (OnSlope())
@@ -128,16 +129,21 @@ public class PlayerMovement : MonoBehaviour
 
         if (isGrounded)
         {
-            if (moveVector != Vector2.zero)
-            {
-                float angle = Mathf.Atan2(moveVector.x, moveVector.y) * Mathf.Rad2Deg + cameraHolder.eulerAngles.y;
-                Quaternion rotation = Quaternion.Euler(0, angle, 0);
-                rb.rotation = Quaternion.Slerp(rb.rotation, rotation, rotationSpeed * Time.deltaTime);
-            }
+            //if (moveVector != Vector2.zero)
+            //{
+            //    float angle = Mathf.Atan2(moveVector.x, moveVector.y) * Mathf.Rad2Deg + cameraHolder.eulerAngles.y;
+            //    Quaternion rotation = Quaternion.Euler(0, angle, 0);
+            //    rb.rotation = Quaternion.Slerp(rb.rotation, rotation, rotationSpeed * Time.deltaTime);
+            //}
 
         }
 
         rb.useGravity = !OnSlope();
+    }
+
+    private void LateUpdate()
+    {
+        cameraRotation.CamHandeler();
     }
 
     #region Slope
