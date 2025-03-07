@@ -10,9 +10,10 @@ public class PlayerMovement : MonoBehaviour
     [Header("jump")]
     private float jumpForce = 18f;
     private float airMultiPlier = 0.4f;
+    private float grappleJumpForce = 3f;
 
     [Header("Sprint")]
-    private float walkSpeed = 8f;
+    private float walkSpeed = 7f;
     private float sprintSpeed = 18f;
     public float wallRunSpeed = 12f;
     private bool isSprinting;
@@ -26,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask whatIsGround;
     public bool wallRunning;
     public bool isGrappling;
-
+    public bool acitvateGrapple;
 
     [Header("Components")]
     private Rigidbody rb;
@@ -44,12 +45,12 @@ public class PlayerMovement : MonoBehaviour
     private bool exitSlope;
 
     [Header("reffrences")]
-    private CameraRotation cameraRotation;
+    private Transform cameraHolder;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        cameraRotation = FindFirstObjectByType<CameraRotation>();
+        cameraHolder = Camera.main.transform;
     }
 
     private void Start()
@@ -80,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         Vector3 move = new Vector3(moveVector.x, 0, moveVector.y);
-        //move = cameraHolder.forward * move.z + cameraHolder.right * move.x;
+        move = cameraHolder.forward * move.z + cameraHolder.right * move.x;
         move.y = 0;
 
         if (OnSlope())
@@ -129,23 +130,22 @@ public class PlayerMovement : MonoBehaviour
 
         if (isGrounded)
         {
-            //if (moveVector != Vector2.zero)
-            //{
-            //    float angle = Mathf.Atan2(moveVector.x, moveVector.y) * Mathf.Rad2Deg + cameraHolder.eulerAngles.y;
-            //    Quaternion rotation = Quaternion.Euler(0, angle, 0);
-            //    rb.rotation = Quaternion.Slerp(rb.rotation, rotation, rotationSpeed * Time.deltaTime);
-            //}
+            if (moveVector != Vector2.zero)
+            {
+                float angle = Mathf.Atan2(moveVector.x, moveVector.y) * Mathf.Rad2Deg + cameraHolder.eulerAngles.y;
+                Quaternion rotation = Quaternion.Euler(0, angle, 0);
+                rb.rotation = Quaternion.Slerp(rb.rotation, rotation, rotationSpeed * Time.deltaTime);
+            }
 
         }
 
         rb.useGravity = !OnSlope();
     }
-
-    private void LateUpdate()
+    
+    public void ResetRestrictions()
     {
-        cameraRotation.CamHandeler();
+        isGrappling = false;
     }
-
     #region Slope
     private bool OnSlope()
     {
@@ -191,6 +191,11 @@ public class PlayerMovement : MonoBehaviour
 
                 rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
             }
+
+        if (isGrappling)
+        {
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, rb.linearVelocity.y + grappleJumpForce, rb.linearVelocity.z);
+        }
     }
     #endregion
 

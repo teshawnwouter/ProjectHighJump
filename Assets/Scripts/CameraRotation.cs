@@ -17,7 +17,7 @@ public class CameraRotation : MonoBehaviour
     private float defaultPos;
     private float cameraOffset = 0.2f;
 
-    private float camDetectionRadius = 10f;
+    private float camDetectionRadius = 0.2f;
 
     private float followSpeed = 0.1f;
 
@@ -53,7 +53,7 @@ public class CameraRotation : MonoBehaviour
     {
         lookAngle = lookAngle + (cameVector.x * sense);
         pivitAngle = pivitAngle - (cameVector.y * sense);
-        pivitAngle = Mathf.Clamp(pivitAngle, -90, 90);
+        pivitAngle = Mathf.Clamp(pivitAngle, -35, 35);
 
         Vector3 rotation = Vector3.zero;
         rotation.y = lookAngle;
@@ -75,7 +75,7 @@ public class CameraRotation : MonoBehaviour
         Vector3 direction = camTransform.position - camPivot.position;
         direction.Normalize();
 
-        if (Physics.SphereCast(camTransform.transform.position, camDetectionRadius, direction, out hit, Mathf.Abs(targetPos), collissionLayer))
+        if (Physics.SphereCast(camPivot.transform.position, camDetectionRadius, direction, out hit, Mathf.Abs(targetPos), collissionLayer))
         {
             Debug.Log("wall");
             float distance = Vector3.Distance(camPivot.position, hit.point);
@@ -89,6 +89,12 @@ public class CameraRotation : MonoBehaviour
 
         camposVector.z = Mathf.Lerp(camTransform.localPosition.z, targetPos, 0.2f);
 
-        camTransform.localPosition = camposVector;
+        //camTransform.localPosition = camposVector;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(camPivot.transform.position, camDetectionRadius);
     }
 }

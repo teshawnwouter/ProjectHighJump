@@ -5,7 +5,7 @@ public class WallRun : MonoBehaviour
     [Header("wallRunning")]
     public LayerMask whatIsWall;
     public LayerMask whatIsGround;
-    private float wallRunForce = 8;
+    private float wallRunForce = 18f;
     private float wallRunTimer;
     private float wallRunMaxTime = 1.5f;
 
@@ -92,7 +92,7 @@ public class WallRun : MonoBehaviour
             rb.AddForce(-wallNormal * 100, ForceMode.Force);
         }
 
-        rb.linearVelocity = wallForwardDirection;
+        rb.linearVelocity = wallForwardDirection * wallRunForce;
 
         rb.AddForce(wallForwardDirection * wallRunForce, ForceMode.Force);
 
