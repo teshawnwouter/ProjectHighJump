@@ -152,6 +152,7 @@ public class PlayerMovement : MonoBehaviour
 
     public Vector3 CalculateJumpVelocity(Vector3 startPoint, Vector3 endPoint, float trajectoryHeight)
     {
+        //made with https://www.youtube.com/watch?v=IvT8hjy6q4o for equations and guided with https://www.youtube.com/watch?v=TYzZsBl3OI0
         float gravity = Physics.gravity.y * gravityScale;
         float displacementY = endPoint.y - startPoint.y;
         Vector3 displacementXZ = new Vector3(endPoint.x - startPoint.x, 0f, endPoint.z - startPoint.z);
