@@ -26,8 +26,6 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;
     [SerializeField] private LayerMask whatIsGround;
     public bool wallRunning;
-    public bool isGrappling;
-    public bool acitvateGrapple;
 
     [Header("Components")]
     private Rigidbody rb;
@@ -47,6 +45,11 @@ public class PlayerMovement : MonoBehaviour
     [Header("reffrences")]
     private Transform cameraHolder;
 
+    [Header("grapple")]
+    public bool isGrappling;
+    public bool freeze;
+    private Vector3 velocityToSet;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -60,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeigt * 0.5f + 0.2f, whatIsGround);
-        if (isGrounded)
+        if (isGrounded && !isGrappling)
         {
             rb.linearDamping = drag;
         }
@@ -68,13 +71,16 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.linearDamping = 0;
         }
+        if (freeze)
+        {
+            rb.linearVelocity = Vector3.zero;
 
-
+        }
     }
 
     private void FixedUpdate()
     {
-        if (!wallRunning)
+        if (!wallRunning || !isGrappling)
         {
             rb.AddForce(Physics.gravity * gravityScale * rb.mass);
 
@@ -141,11 +147,34 @@ public class PlayerMovement : MonoBehaviour
 
         rb.useGravity = !OnSlope();
     }
-    
-    public void ResetRestrictions()
+
+    #region grapple
+
+    public Vector3 CalculateJumpVelocity(Vector3 startPoint, Vector3 endPoint, float trajectoryHeight)
     {
-        isGrappling = false;
+        float gravity = Physics.gravity.y;
+        float displacementY = endPoint.y - startPoint.y;
+        Vector3 displacementXZ = new Vector3(endPoint.x - startPoint.x, 0f, endPoint.z - startPoint.z);
+
+        Vector3 velocityY = Vector3.up * Mathf.Sqrt(-2 * gravity * trajectoryHeight);
+        Vector3 velocityXZ = displacementXZ / (Mathf.Sqrt(-2 * trajectoryHeight / gravity) + Mathf.Sqrt(2 * (displacementY - trajectoryHeight) / gravity));
+
+        return velocityXZ + velocityY;
     }
+    private void SetVelocity()
+    {   
+        rb.linearVelocity = velocityToSet;
+    }
+
+    public void JumpToPosition(Vector3 targetPosition, float trajectoryHeight)
+    {
+        isGrappling = true;
+
+        velocityToSet = CalculateJumpVelocity(transform.position, targetPosition, trajectoryHeight);
+        Invoke(nameof(SetVelocity), 0.1f);
+
+    }
+    #endregion
     #region Slope
     private bool OnSlope()
     {
@@ -167,7 +196,13 @@ public class PlayerMovement : MonoBehaviour
     #region Inputs
     public void OnWalk(InputAction.CallbackContext context)
     {
-        moveVector = context.ReadValue<Vector2>();
+        if (!isGrappling)
+        {
+            if (context.performed || context.canceled)
+            {
+                moveVector = context.ReadValue<Vector2>();
+            }
+        }
     }
 
     public void OnSprint(InputAction.CallbackContext context)
@@ -191,11 +226,6 @@ public class PlayerMovement : MonoBehaviour
 
                 rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
             }
-
-        if (isGrappling)
-        {
-            rb.linearVelocity = new Vector3(rb.linearVelocity.x, rb.linearVelocity.y + grappleJumpForce, rb.linearVelocity.z);
-        }
     }
     #endregion
 

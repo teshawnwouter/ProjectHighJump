@@ -72,7 +72,7 @@ public class HookShot : MonoBehaviour
     private void ExecuteGrapple()
     {
         playerMovement.isGrappling = true;
-        playerMovement.acitvateGrapple = true;
+        //playerMovement.acitvateGrapple = true;
         hookShooting = true;
         rb.useGravity = false;
 
@@ -82,7 +82,7 @@ public class HookShot : MonoBehaviour
     private void StopGrapple()
     {
         playerMovement.isGrappling = false;
-        playerMovement.acitvateGrapple = false;
+       // playerMovement.acitvateGrapple = false;
         hookShooting = false;
         rb.useGravity = true;
         grapplingCdTimer = grapplingCd;
