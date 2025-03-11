@@ -45,17 +45,22 @@ public class PlayerMovement : MonoBehaviour
     [Header("reffrences")]
     private Transform cameraHolder;
     private WallRun wallRun;
+    private Swinging swing;
 
     [Header("grapple")]
     public bool isGrappling;
     public bool freeze;
     private Vector3 velocityToSet;
+
+    [Header("Swing")]
+    public bool isSwining;
     #endregion
 
     #region Runtime
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        swing = GetComponent<Swinging>();
         wallRun = GetComponent<WallRun>();
         cameraHolder = Camera.main.transform;
     }
@@ -241,6 +246,8 @@ public class PlayerMovement : MonoBehaviour
                 wallRun.WallJump();
             }
         }
+
+
     }
     #endregion
 
