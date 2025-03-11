@@ -4,13 +4,13 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody), typeof(PlayerInput))]
 public class PlayerMovement : MonoBehaviour
 {
+    #region variables
     [Header("Input Checks")]
     public Vector2 moveVector;
 
     [Header("jump")]
     private float jumpForce = 18f;
     private float airMultiPlier = 0.4f;
-    private float grappleJumpForce = 3f;
 
     [Header("Sprint")]
     private float walkSpeed = 7f;
@@ -50,7 +50,9 @@ public class PlayerMovement : MonoBehaviour
     public bool isGrappling;
     public bool freeze;
     private Vector3 velocityToSet;
+    #endregion
 
+    #region Runtime
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -149,6 +151,7 @@ public class PlayerMovement : MonoBehaviour
 
         rb.useGravity = !OnSlope();
     }
+    #endregion
 
     #region grapple
 
@@ -178,6 +181,7 @@ public class PlayerMovement : MonoBehaviour
 
     }
     #endregion
+
     #region Slope
     private bool OnSlope()
     {
@@ -194,7 +198,6 @@ public class PlayerMovement : MonoBehaviour
         return Vector3.ProjectOnPlane(moveVector, slopeHit.normal).normalized;
     }
     #endregion
-
 
     #region Inputs
     public void OnWalk(InputAction.CallbackContext context)
