@@ -21,7 +21,14 @@ public class WallRun : MonoBehaviour
     private Rigidbody rb;
     private PlayerMovement playerMovement;
 
-    private float turnSpeed = 3f;
+    [Header("WallJump")]
+    private float wallJumpForce = 7f;
+    private float wallSlideForce = 12f;
+
+    [Header("exiting")]
+     private bool isExitingWall;
+     private float exitWallTime = 0.2f;
+     private float exitWallTimer;
 
     private void Start()
     {
@@ -32,6 +39,24 @@ public class WallRun : MonoBehaviour
     {
         WallChecker();
         StateMachine();
+
+        if (isExitingWall)
+        {
+            if (playerMovement.wallRunning)
+            {
+                StopWallRun();
+            }
+
+            if (exitWallTimer > 0)
+            {
+                exitWallTimer -= Time.deltaTime;
+            }
+
+            if(exitWallTimer <= 0)
+            {
+                isExitingWall = false;
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -55,7 +80,7 @@ public class WallRun : MonoBehaviour
 
     private void StateMachine()
     {
-        if ((wallLeft || wallRight) && playerMovement.moveVector.y > 0 && AboveGround())
+        if ((wallLeft || wallRight) && playerMovement.moveVector.y > 0 && AboveGround() && !isExitingWall)
         {
             if (!playerMovement.wallRunning)
                 StartWallRun();
@@ -105,4 +130,16 @@ public class WallRun : MonoBehaviour
         rb.useGravity = true;
     }
 
+    public void WallJump()
+    {
+        isExitingWall = true;
+        exitWallTimer = exitWallTime;
+
+        Vector3 wallNormal = wallRight ? rightWallHit.normal : leftWallHit.normal;
+
+        Vector3 forceToApply = transform.up * wallJumpForce + wallNormal * wallSlideForce;
+
+        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
+        rb.AddForce(forceToApply, ForceMode.Impulse);
+    }
 }

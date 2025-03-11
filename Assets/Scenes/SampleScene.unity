@@ -1386,6 +1386,9 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
+  isExitingWall: 0
+  exitWallTime: 0.2
+  exitWallTimer: 0
 --- !u!114 &564282296
 MonoBehaviour:
   m_ObjectHideFlags: 0

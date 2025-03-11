@@ -44,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("reffrences")]
     private Transform cameraHolder;
+    private WallRun wallRun;
 
     [Header("grapple")]
     public bool isGrappling;
@@ -53,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        wallRun = GetComponent<WallRun>();
         cameraHolder = Camera.main.transform;
     }
 
@@ -134,7 +136,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (isGrounded)
+        if (!wallRunning || !isGrappling)
         {
             if (moveVector != Vector2.zero)
             {
@@ -227,6 +229,15 @@ public class PlayerMovement : MonoBehaviour
 
                 rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
             }
+
+        if (wallRunning)
+        {
+            if (context.performed)
+            {
+                Debug.Log("wallJump");
+                wallRun.WallJump();
+            }
+        }
     }
     #endregion
 
