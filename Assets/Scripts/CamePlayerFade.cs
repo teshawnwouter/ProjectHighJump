@@ -7,7 +7,7 @@ public class CamePlayerFade : MonoBehaviour
     [SerializeField] private float maxRot, transparancyPerDeg;
     void Start()
     {
-        fadeMaterial = player.GetComponent<Material>();
+        //fadeMaterial = player.GetComponent<Material>();
         transparancyPerDeg = 1 / maxRot;
     }
 
