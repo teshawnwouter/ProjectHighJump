@@ -5275,7 +5275,7 @@ MonoBehaviour:
     Strategy: 0
     MaximumEffort: 4
     SmoothingTime: 0
-    Damping: 4
+    Damping: 0
     DampingWhenOccluded: 0.2
   ShotQualityEvaluation:
     Enabled: 0
