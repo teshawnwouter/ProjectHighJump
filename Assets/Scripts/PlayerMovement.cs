@@ -246,7 +246,11 @@ public class PlayerMovement : MonoBehaviour
                 wallRun.WallJump();
             }
         }
-
+        if (isSwining)
+        {
+            swing.StopSwing();
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x,rb.linearVelocity.y + jumpForce,rb.linearVelocity.z);
+        }
 
     }
     #endregion

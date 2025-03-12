@@ -72,6 +72,8 @@ public class GrappleHook : MonoBehaviour
             Invoke(nameof(StopGrapple), 3f);
         }
 
+        lr.positionCount = 2;
+
         //turns the player towards where the grapple is shot
         transform.forward = camForward.forward;
         lr.enabled = true;
@@ -107,6 +109,7 @@ public class GrappleHook : MonoBehaviour
         playerMovement.freeze = false;
         playerMovement.isGrappling = false;
         grappleCDTimer = grappleCD;
+        lr.positionCount = 0;
         lr.enabled = false;
     }
 

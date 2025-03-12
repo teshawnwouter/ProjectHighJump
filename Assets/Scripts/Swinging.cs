@@ -10,7 +10,7 @@ public class Swinging : MonoBehaviour
     private Vector3 currentGrapplePos;
     private float horizontalThrustForce;
     private float forwardThrustForce;
-    private float extendedCableSpeed;
+    //private float extendedCableSpeed;
 
 
     [Header("Refrerances")]
@@ -29,12 +29,18 @@ public class Swinging : MonoBehaviour
     {
         camForward = Camera.main.transform;
     }
+
+    private void LateUpdate()
+    {
+        DrawRope();
+    }
     private void StartSWing()
     {
         RaycastHit hit;
 
         if (Physics.Raycast(transform.position, camForward.forward, out hit, maxSwingDist, SwingAble))
         {
+            pm.isSwining = true;
             swingPoint = hit.point;
             joint = gameObject.AddComponent<SpringJoint>();
             joint.autoConfigureConnectedAnchor = false;
@@ -49,11 +55,14 @@ public class Swinging : MonoBehaviour
             joint.damper = 7f;
             joint.massScale = 4.5f;
 
+            lineRenderer.positionCount = 2;
+            currentGrapplePos = transform.position;
         }
     }
     
-    private void StopSwing()
+    public void StopSwing()
     {
+        pm.isSwining = false;
         lineRenderer.positionCount = 0;
         Destroy(joint);
     }
@@ -68,40 +77,13 @@ public class Swinging : MonoBehaviour
         lineRenderer.SetPosition(1,swingPoint);
     }
 
-
-    private void SwingMovement()
-    {
-        if (pm.moveVector.x < 0)
-        {
-            rb.AddForce(-transform.right * horizontalThrustForce * Time.deltaTime);
-        }
-        if(pm.moveVector.x > 0)
-        {
-            rb.AddForce(transform.right * horizontalThrustForce * Time.deltaTime);
-        }
-        if(pm.moveVector.y < 0)
-        {
-            rb.AddForce(transform.forward * forwardThrustForce * Time.deltaTime);
-        }
-    }
-
-    public void SwingJump()
-    {
-        Vector3 distanceToPoint = swingPoint - transform.position;
-        rb.AddForce(distanceToPoint.normalized * forwardThrustForce * Time.deltaTime);
-
-        float distanceFromPoint = Vector3.Distance(transform.position, swingPoint);
-
-        joint.maxDistance = distanceFromPoint * 0.8f;
-        joint.minDistance = distanceFromPoint * 0.25f;
-    }
-
     public void OnSwingHook(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
             StartSWing();
         }
+
         if (context.canceled)
         {
             StopSwing();
