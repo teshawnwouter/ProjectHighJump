@@ -56,8 +56,9 @@ public class Swinging : MonoBehaviour
             joint.massScale = 4.5f;
 
             lineRenderer.positionCount = 2;
-            currentGrapplePos = transform.position;
         }
+            lineRenderer.SetPosition(1,swingPoint);
+            currentGrapplePos = transform.position;
     }
     
     public void StopSwing()
