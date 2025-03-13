@@ -38,7 +38,11 @@ public class Swinging : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, camForward.forward, out hit, maxSwingDist, SwingAble))
+        Vector2 centerofScreen = new Vector2(Screen.width / 2, Screen.height / 2);
+
+        Ray ray = Camera.main.ScreenPointToRay(centerofScreen);
+
+        if (Physics.Raycast(ray, out hit, maxSwingDist, SwingAble))
         {
             pm.isSwining = true;
             swingPoint = hit.point;
@@ -46,7 +50,7 @@ public class Swinging : MonoBehaviour
             joint.autoConfigureConnectedAnchor = false;
             joint.connectedAnchor = swingPoint;
 
-            float distFromPoint = Vector3.Distance(transform.position,swingPoint);
+            float distFromPoint = Vector3.Distance(transform.position, swingPoint);
 
             joint.maxDistance = distFromPoint * 0.8f;
             joint.minDistance = distFromPoint * 0.25f;
@@ -57,10 +61,11 @@ public class Swinging : MonoBehaviour
 
             lineRenderer.positionCount = 2;
         }
-            lineRenderer.SetPosition(1,swingPoint);
-            currentGrapplePos = transform.position;
+
+        lineRenderer.enabled = true;
+        currentGrapplePos = transform.position;
     }
-    
+
     public void StopSwing()
     {
         pm.isSwining = false;
@@ -74,8 +79,8 @@ public class Swinging : MonoBehaviour
 
         currentGrapplePos = Vector3.Lerp(currentGrapplePos, swingPoint, Time.deltaTime * 8f);
 
-        lineRenderer.SetPosition(0,transform.position);
-        lineRenderer.SetPosition(1,swingPoint);
+        lineRenderer.SetPosition(0, transform.position);
+        lineRenderer.SetPosition(1, swingPoint);
     }
 
     public void OnSwingHook(InputAction.CallbackContext context)

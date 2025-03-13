@@ -510,6 +510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c352061a187bde24d98b5c90daa8207d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camTransform: {fileID: 0}
   sense: 15
   topCamPos: 90
   bottomCamPos: -90

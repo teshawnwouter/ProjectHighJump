@@ -7,19 +7,26 @@ public class CameraScript : MonoBehaviour
 
     private GameObject camHolder;
 
-    [SerializeField] private float sense = 200f;
+    public Transform camTransform;
+    private RaycastHit hit;
+    private Vector3 camOffset;
 
-   [SerializeField] private float topCamPos, bottomCamPos;
+    [SerializeField] private float sense = 15f;
+
+    [SerializeField] private float topCamPos, bottomCamPos;
 
     private float YAngle, XAngle;
 
     private void Awake()
     {
         camHolder = transform.parent.gameObject;
+       
     }
     private void Start()
     {
-
+        camOffset.y = transform.parent.localPosition.y;
+        camOffset.z = transform.localPosition.z;
+        camOffset.x = transform.localPosition.x;
     }
 
     private void Update()

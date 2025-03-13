@@ -242,7 +242,6 @@ public class PlayerMovement : MonoBehaviour
         {
             if (context.performed)
             {
-                Debug.Log("wallJump");
                 wallRun.WallJump();
             }
         }

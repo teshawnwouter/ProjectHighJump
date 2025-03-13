@@ -53,6 +53,9 @@ public class GrappleHook : MonoBehaviour
     /// </summary>
     private void StartGrapple()
     {
+        Vector2 centerofScreen = new Vector2(Screen.width / 2, Screen.height / 2);
+
+        Ray ray = Camera.main.ScreenPointToRay(centerofScreen);
         //If the grapple timer is not 0 nothing happnes
         if (grappleCDTimer > 0) return;
 
@@ -60,7 +63,7 @@ public class GrappleHook : MonoBehaviour
 
         //shoot a raycast from the player towards the direction the camera is facing and sets the end point if it hits its layer
         RaycastHit hit;
-        if (Physics.Raycast(grapplePoint.position, camForward.forward, out hit, maxGrappleDist, whatIsGrapple))
+        if (Physics.Raycast(ray, out hit, maxGrappleDist, whatIsGrapple))
         {
             grappleHitPoint = hit.point;
             Invoke(nameof(ExecuteGrapple), grappleDelay);
@@ -75,11 +78,11 @@ public class GrappleHook : MonoBehaviour
         lr.positionCount = 2;
 
         //turns the player towards where the grapple is shot
-        transform.forward = camForward.forward;
         lr.enabled = true;
         lr.SetPosition(0, camForward.position);
         lr.SetPosition(1, grappleHitPoint);
     }
+
 
     /// <summary>
     /// handels the grapple points and the physics for pulling you in an arc towards the point
@@ -87,7 +90,7 @@ public class GrappleHook : MonoBehaviour
     private void ExecuteGrapple()
     {
         playerMovement.freeze = false;
-        
+
         //takes the lowest point as the its own point -1
         Vector3 lowestPoint = new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z);
 
