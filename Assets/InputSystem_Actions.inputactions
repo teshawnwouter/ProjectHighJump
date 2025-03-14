@@ -195,19 +195,8 @@
                 },
                 {
                     "name": "",
-                    "id": "dca5a20f-7f1a-48d3-ae12-6edff6398105",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Grapple",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "bf28cf5a-3d88-492b-8d9f-cfdedf1a9558",
-                    "path": "<Keyboard>/e",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
@@ -218,7 +207,7 @@
                 {
                     "name": "",
                     "id": "4db06d51-283e-4d85-905e-3ced298076f0",
-                    "path": "<Keyboard>/q",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

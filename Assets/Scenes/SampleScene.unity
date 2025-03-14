@@ -511,7 +511,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camTransform: {fileID: 0}
-  sense: 15
+  sense: 10
   topCamPos: 90
   bottomCamPos: -90
 --- !u!1 &410087039
