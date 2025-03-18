@@ -8,15 +8,10 @@ public class Swinging : MonoBehaviour
     private Vector3 swingPoint;
     public SpringJoint joint;
     private Vector3 currentGrapplePos;
-    private float horizontalThrustForce;
-    private float forwardThrustForce;
-    //private float extendedCableSpeed;
-
 
     [Header("Refrerances")]
     public LineRenderer lineRenderer;
     public Transform SwingHookPoint;
-    private Transform camForward;
     public LayerMask SwingAble;
     private PlayerMovement pm;
     private Rigidbody rb;
@@ -24,10 +19,6 @@ public class Swinging : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         pm = GetComponent<PlayerMovement>();
-    }
-    private void Start()
-    {
-        camForward = Camera.main.transform;
     }
 
     private void LateUpdate()

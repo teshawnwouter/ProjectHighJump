@@ -5,7 +5,7 @@ public class GrappleHook : MonoBehaviour
 {
     #region Variables
     [Header("grappel")]
-    private float maxGrappleDist = 25f;
+    private float maxGrappleDist = 50f;
     private float grappleDelay = 0.01f;
     private Vector3 grappleHitPoint;
     private float overshootYAxis = 2f;
@@ -72,7 +72,7 @@ public class GrappleHook : MonoBehaviour
         {
             grappleHitPoint = grapplePoint.position + camForward.forward * maxGrappleDist;
 
-            Invoke(nameof(StopGrapple), 3f);
+            Invoke(nameof(StopGrapple), 0.5f);
         }
 
         lr.positionCount = 2;
