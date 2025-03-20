@@ -5,18 +5,21 @@ public class RotatingPlatforms : MonoBehaviour
     [SerializeField] private bool isRotating;
 
     [SerializeField] private float rotateCooldown;
+    private float rotateTimer;
 
-
-    [SerializeField] private float rotationSpeed = 2f;
-
-    private void Start()
-    {
-        InvokeRepeating(nameof(AllowToRotate), rotateCooldown, 6f);
-    }
+    private Quaternion targetRot;
+    private float stopTreshold = 3f;
+    private float rotationSpeed = 2f;
 
     private void Update()
     {
-        if (isRotating)
+        AllowToRotate();
+        if (rotateTimer > 0)
+        {
+            rotateTimer -= Time.deltaTime;
+        }
+
+        if (rotateTimer <= 0)
         {
             RotatingPlatform();
         }
@@ -30,13 +33,13 @@ public class RotatingPlatforms : MonoBehaviour
 
     private void AllowToRotate()
     {
-        if (isRotating)
+        float rotDiffrence = Mathf.Abs( Quaternion.Angle(transform.rotation,targetRot));
+
+        if (rotDiffrence < stopTreshold)
         {
-            isRotating = false;
-        }
-        else
-        {
-            isRotating = true;
+            transform.rotation = targetRot;
+            rotateTimer = rotateCooldown;
+            targetRot = Quaternion.Euler(targetRot.eulerAngles.x+180,0,0);
         }
     }
 }
