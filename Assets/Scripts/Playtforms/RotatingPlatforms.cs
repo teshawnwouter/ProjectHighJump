@@ -33,13 +33,13 @@ public class RotatingPlatforms : MonoBehaviour
 
     private void AllowToRotate()
     {
-        float rotDiffrence = Mathf.Abs( Quaternion.Angle(transform.rotation,targetRot));
+        float rotDiffrence = Mathf.Abs(Quaternion.Angle(transform.rotation, targetRot));
 
         if (rotDiffrence < stopTreshold)
         {
             transform.rotation = targetRot;
             rotateTimer = rotateCooldown;
-            targetRot = Quaternion.Euler(targetRot.eulerAngles.x+180,0,0);
+            targetRot = Quaternion.Euler(targetRot.eulerAngles.x + 180, 0, 0);
         }
     }
 }
