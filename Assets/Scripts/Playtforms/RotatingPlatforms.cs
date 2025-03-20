@@ -2,15 +2,41 @@ using UnityEngine;
 
 public class RotatingPlatforms : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private bool isRotating;
+
+    [SerializeField] private float rotateCooldown;
+
+
+    [SerializeField] private float rotationSpeed = 2f;
+
+    private void Start()
     {
-        
+        InvokeRepeating(nameof(AllowToRotate), rotateCooldown, 6f);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (isRotating)
+        {
+            RotatingPlatform();
+        }
+    }
+
+
+    private void RotatingPlatform()
+    {
+        transform.Rotate(rotationSpeed * Time.deltaTime, 0, 0);
+    }
+
+    private void AllowToRotate()
+    {
+        if (isRotating)
+        {
+            isRotating = false;
+        }
+        else
+        {
+            isRotating = true;
+        }
     }
 }
