@@ -4,8 +4,8 @@ public class CamCollision : MonoBehaviour
 {
     private float minDist = 1f;
     private float maxDist = 4;
+    private float smooth = 10f;
     private Vector3 dollyDir;
-    private Vector3 adjustedDollyDir;
     private float distance;
 
 
@@ -20,6 +20,15 @@ public class CamCollision : MonoBehaviour
         Vector3 desiredCam = transform.parent.TransformPoint(dollyDir * maxDist);
         RaycastHit hit;
 
-        //if(Physics.Raycast(transform.parent.position,desiredCam,))
+        if(Physics.Raycast(transform.parent.position,desiredCam,out hit))   
+        {
+            distance = Mathf.Clamp(hit.distance * 0.9f, minDist, maxDist);
+        }
+        else
+        {
+            distance = maxDist;
+        }
+
+        transform.localPosition = Vector3.Lerp(transform.localPosition,dollyDir * distance, Time.deltaTime * smooth);
     }
 }

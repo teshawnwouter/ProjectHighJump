@@ -5,11 +5,11 @@ public class CameraScript : MonoBehaviour
 {
     private Vector2 lookVector;
 
-    private GameObject camHolder;
+    public  GameObject camHolder;
 
-    public Transform camTransform;
     private RaycastHit hit;
-    private Vector3 camOffset;
+    public Vector3 camOffset;
+    private float camFollowSpeed = 120f;
 
     [SerializeField] private float sense = 15f;
 
@@ -17,26 +17,26 @@ public class CameraScript : MonoBehaviour
 
     private float YAngle, XAngle;
 
-    private void Awake()
-    {
-        camHolder = transform.parent.gameObject;
-       
-    }
-    private void Start()
-    {
-        camOffset.y = transform.parent.localPosition.y;
-        camOffset.z = transform.localPosition.z;
-        camOffset.x = transform.localPosition.x;
-    }
+    
+  
 
     private void Update()
     {
         lookVector = lookVector * sense * Time.deltaTime;
-
         XAngle += lookVector.x;
         YAngle -= lookVector.y;
         YAngle = Mathf.Clamp(YAngle, bottomCamPos, topCamPos);
-        camHolder.transform.rotation = Quaternion.Euler(YAngle, XAngle, 0);
+        transform.rotation = Quaternion.Euler(YAngle, XAngle, 0);
+    }
+
+    private void LateUpdate()
+    {
+        CamFollow();
+    }
+
+    private void CamFollow()
+    {
+        transform.position = camHolder.transform.position;
     }
 
     public void OnLook(InputAction.CallbackContext context)
