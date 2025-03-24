@@ -1,48 +1,17 @@
+using Unity.Cinemachine;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class CameraScript : MonoBehaviour
 {
-    [Header("input")]
-    private Vector2 lookVector;
-    [Header("Player")]
-    public  GameObject camHolder;
-
-    [Header("sensitivity")]
-    [SerializeField] private float sense = 15f;
-
-    [Header("positions")]
-    [SerializeField] private float topCamPos, bottomCamPos;
-    private float YAngle, XAngle;
-
-    
-  
+    [SerializeField] private Transform camtarget;
+    [SerializeField] private Transform oriantation;
+    [SerializeField] private Transform player;
 
     private void Update()
     {
-        lookVector = lookVector * sense * Time.deltaTime;
-        XAngle += lookVector.x;
-        YAngle -= lookVector.y;
-        YAngle = Mathf.Clamp(YAngle, bottomCamPos, topCamPos);
-        transform.rotation = Quaternion.Euler(YAngle, XAngle, 0);
-    }
+        Vector3 camDir = camtarget.position - new Vector3(transform.position.x, camtarget.position.y, transform.position.z);
+        oriantation.forward = camDir.normalized;
 
-    private void LateUpdate()
-    {
-        CamFollow();
+        player.forward = camDir.normalized;
     }
-
-    private void CamFollow()
-    {
-        transform.position = camHolder.transform.position;
-    }
-
-    public void OnLook(InputAction.CallbackContext context)
-    {
-        if (context.performed || context.canceled)
-        {
-            lookVector = context.ReadValue<Vector2>();
-        }
-    }
-
 }

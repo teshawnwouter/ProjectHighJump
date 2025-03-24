@@ -1,3 +1,4 @@
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class WallRun : MonoBehaviour
@@ -19,6 +20,7 @@ public class WallRun : MonoBehaviour
     [Header("Refereces")]
     private Rigidbody rb;
     private PlayerMovement playerMovement;
+    private CinemachineCamera cam;
 
     [Header("WallJump")]
     private float wallJumpForce = 9f;
@@ -28,6 +30,11 @@ public class WallRun : MonoBehaviour
      private bool isExitingWall;
      private float exitWallTime = 0.2f;
      private float exitWallTimer;
+
+    [Header("camPositions")]
+    public Transform camLeft;
+    public Transform camRight;
+
     #endregion
 
     #region runtime
@@ -35,11 +42,13 @@ public class WallRun : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         playerMovement = GetComponent<PlayerMovement>();
+        cam = FindFirstObjectByType<CinemachineCamera>();
     }
     private void Update()
     {
         WallChecker();
         StateMachine();
+        CamAdjustment();
 
         if (isExitingWall)
         {
@@ -158,6 +167,19 @@ public class WallRun : MonoBehaviour
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
         // aplys the force to the normal i calculated
         rb.AddForce(forceToApply, ForceMode.Impulse);
+    }
+
+    private void CamAdjustment()
+    {
+        if ((wallLeft))
+        {
+            cam.LookAt = camRight;
+        }
+        if ((wallRight)) 
+        { 
+            cam.LookAt = camLeft;
+        }
+
     }
     #endregion
 }
