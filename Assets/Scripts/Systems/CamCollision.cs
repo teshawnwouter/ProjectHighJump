@@ -20,7 +20,7 @@ public class CamCollision : MonoBehaviour
         Vector3 desiredCam = transform.parent.TransformPoint(dollyDir * maxDist);
         RaycastHit hit;
 
-        if(Physics.Raycast(transform.parent.position,desiredCam,out hit))   
+        if(Physics.Linecast(transform.parent.position,desiredCam,out hit))   
         {
             distance = Mathf.Clamp(hit.distance * 0.9f, minDist, maxDist);
         }
