@@ -12,7 +12,7 @@ public class WallRun : MonoBehaviour
     private RaycastHit leftWallHit;
     private RaycastHit rightWallHit;
     private float wallCheckDist = 1f;
-    private float minJumpHeigt = 1.5f;
+    private float minJumpHeigt = 0.5f;
     private bool wallLeft;
     private bool wallRight;
 
@@ -21,8 +21,8 @@ public class WallRun : MonoBehaviour
     private PlayerMovement playerMovement;
 
     [Header("WallJump")]
-    private float wallJumpForce = 7f;
-    private float wallSlideForce = 12f;
+    private float wallJumpForce = 9f;
+    private float wallSlideForce = 15f;
 
     [Header("exiting")]
      private bool isExitingWall;

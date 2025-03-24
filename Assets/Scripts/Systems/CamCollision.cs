@@ -2,11 +2,16 @@ using UnityEngine;
 
 public class CamCollision : MonoBehaviour
 {
+    [Header("Distance")]
     private float minDist = 1f;
     private float maxDist = 4;
-    private float smooth = 10f;
-    private Vector3 dollyDir;
     private float distance;
+
+    [Header("posistion")]
+    private float smooth = 10f;
+
+    [Header("direction")]
+    private Vector3 dollyDir;
 
 
     private void Awake()

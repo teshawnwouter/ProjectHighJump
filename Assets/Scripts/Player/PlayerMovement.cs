@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Sprint")]
     private float walkSpeed = 7f;
-    private float sprintSpeed = 18f;
+    private float sprintSpeed = 14f;
     public float wallRunSpeed = 12f;
     private bool isSprinting;
 

@@ -2,14 +2,16 @@ using UnityEngine;
 
 public class MovingPlatforms : MonoBehaviour
 {
+    [Header("refrences")]
     [SerializeField] private PathToNextWaypoint pathToNextWaypoint;
 
-    [SerializeField] private float speed = 1f;
 
+    [Header("location")]
     private int waypointIndex;
-
     private Transform previousWaypoint, targetedWayPoint;
 
+    [Header("traveleTime and speed")]
+    [SerializeField] private float speed = 1f;
     private float timeToWaypoint;
     private float elapasedTime;
 

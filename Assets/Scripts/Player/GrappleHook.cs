@@ -79,7 +79,7 @@ public class GrappleHook : MonoBehaviour
 
         //turns the player towards where the grapple is shot
         lr.enabled = true;
-        lr.SetPosition(0, camForward.position);
+        lr.SetPosition(0, centerofScreen * maxGrappleDist);
         lr.SetPosition(1, grappleHitPoint);
     }
 

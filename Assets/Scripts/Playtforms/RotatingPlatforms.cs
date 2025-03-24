@@ -2,13 +2,16 @@ using UnityEngine;
 
 public class RotatingPlatforms : MonoBehaviour
 {
+    [Header("cooldown and way time")]
     [SerializeField] private float rotateCooldown;
     private float rotateTimer;
 
+    [Header("Rotation")]
     private Quaternion targetRot;
-    private float stopTreshold = 3f;
     private float rotationSpeed = 10f;
 
+    [Header("Stop Point")]
+    private float stopTreshold = 3f;
 
     private void Start()
     {

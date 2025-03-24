@@ -3,18 +3,16 @@ using UnityEngine.InputSystem;
 
 public class CameraScript : MonoBehaviour
 {
+    [Header("input")]
     private Vector2 lookVector;
-
+    [Header("Player")]
     public  GameObject camHolder;
 
-    private RaycastHit hit;
-    public Vector3 camOffset;
-    private float camFollowSpeed = 120f;
-
+    [Header("sensitivity")]
     [SerializeField] private float sense = 15f;
 
+    [Header("positions")]
     [SerializeField] private float topCamPos, bottomCamPos;
-
     private float YAngle, XAngle;
 
     
