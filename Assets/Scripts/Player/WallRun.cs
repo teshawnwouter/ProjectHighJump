@@ -171,13 +171,12 @@ public class WallRun : MonoBehaviour
 
     private void CamAdjustment()
     {
-        if ((wallLeft))
-        {
-            cam.LookAt = camRight;
-        }
-        if ((wallRight)) 
+        if (wallRight) 
         { 
             cam.LookAt = camLeft;
+        }else
+        {
+            cam.LookAt = camRight;
         }
 
     }
