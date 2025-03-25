@@ -55220,13 +55220,13 @@ MonoBehaviour:
   Radius: 10
   Orbits:
     Top:
-      Radius: 3
+      Radius: 1.5
       Height: 3
     Center:
       Radius: 5
       Height: 0
     Bottom:
-      Radius: 3
+      Radius: 1.5
       Height: -0.5
     SplineCurvature: 0.3
   RecenteringTarget: 3
