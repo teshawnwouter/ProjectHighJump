@@ -65,10 +65,6 @@ public class PlayerMovement : MonoBehaviour
         cameraHolder = Camera.main.transform;
     }
 
-    private void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-    }
     private void Update()
     {
         isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeigt * 0.5f + 0.2f, whatIsGround);

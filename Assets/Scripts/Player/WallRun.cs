@@ -169,14 +169,17 @@ public class WallRun : MonoBehaviour
         rb.AddForce(forceToApply, ForceMode.Impulse);
     }
 
+    /// <summary>
+    /// Adjusts the priority
+    /// </summary>
     private void CamAdjustment()
     {
         if (wallRight) 
         { 
-            cam.LookAt = camLeft;
+
         }else
         {
-            cam.LookAt = camRight;
+
         }
 
     }
