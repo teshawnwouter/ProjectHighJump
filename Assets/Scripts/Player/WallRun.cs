@@ -14,7 +14,7 @@ public class WallRun : MonoBehaviour
     private RaycastHit leftWallHit;
     private RaycastHit rightWallHit;
     private float wallCheckDist = 1f;
-    private float minJumpHeigt = 0.5f;
+    private float minJumpHeigt = 1.5f;
     private bool wallLeft;
     private bool wallRight;
 
@@ -51,6 +51,7 @@ public class WallRun : MonoBehaviour
         StateMachine();
         CamAdjustment();
 
+        Debug.Log(AboveGround());
         if (isExitingWall)
         {
             if (playerMovement.wallRunning)
@@ -175,24 +176,25 @@ public class WallRun : MonoBehaviour
     /// </summary>
     private void CamAdjustment()
     {
-        if (wallRight)
+        if(wallLeft && AboveGround() && !wallRight)
         {
-            camR.Priority = 1;
-            cam.Priority = 2;
-            camL.Priority = 3;
-        }
-        else if(wallLeft)
-        {
-            camL.Priority = 1;
-            camR.Priority = 2;
-            cam.Priority = 3;
-        }
-        else
-        {
-            cam.Priority = 1;
-            camL.Priority = 2;
             camR.Priority = 3;
+            camL.Priority = 2;
+            cam.Priority = 1;
         }
+        else if(wallRight && AboveGround() && !wallLeft) 
+        {
+            camL.Priority = 3;
+            camR.Priority = 2;
+            cam.Priority = 1;
+        }
+        else if (!wallLeft && !wallRight) 
+        { 
+            cam.Priority = 3;
+            camR.Priority = 2;
+            camL.Priority = 1;
+        }
+
 
     }
     #endregion

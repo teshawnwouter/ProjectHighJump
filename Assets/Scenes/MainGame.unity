@@ -554,7 +554,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.05340853, y: 0.21861885, z: 0.011984425, w: 0.9742739}
+  m_LocalRotation: {x: -0.053408507, y: 0.21861888, z: 0.011984422, w: 0.9742739}
   m_LocalPosition: {x: -1.5035293, y: 1, z: -4.7685847}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -649,7 +649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c352061a187bde24d98b5c90daa8207d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camtarget: {fileID: 1037660163}
+  camtarget: {fileID: 1864120400}
   oriantation: {fileID: 564282292}
   player: {fileID: 564282292}
 --- !u!1 &410087039
@@ -5297,12 +5297,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollideAgainst:
     serializedVersion: 2
-    m_Bits: 193
+    m_Bits: 192
   IgnoreTag: 
   TransparentLayers:
     serializedVersion: 2
     m_Bits: 256
-  MinimumDistanceFromTarget: 0.3
+  MinimumDistanceFromTarget: 2
   AvoidObstacles:
     Enabled: 1
     DistanceLimit: 0
@@ -5341,7 +5341,7 @@ MonoBehaviour:
     Controllers:
     - Name: Look Orbit X
       Owner: {fileID: 1406427815}
-      Enabled: 0
+      Enabled: 1
       Input:
         InputAction: {fileID: -5630151704836100654, guid: 052faaac586de48259a63d0c4782560b, type: 3}
         Gain: 1
@@ -5448,19 +5448,19 @@ MonoBehaviour:
   Radius: 10
   Orbits:
     Top:
-      Radius: 1.5
+      Radius: 1
       Height: 3
     Center:
       Radius: 5
       Height: 0
     Bottom:
-      Radius: 1.5
+      Radius: 1
       Height: -0.5
     SplineCurvature: 0.3
   RecenteringTarget: 3
   HorizontalAxis:
-    Value: 0
-    Center: 0
+    Value: 17.5
+    Center: 17.5
     Range: {x: -180, y: 180}
     Wrap: 1
     Recentering:
@@ -5539,8 +5539,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1406427810}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.056919523, y: 0.074254975, z: 0.0042452193, w: 0.9956045}
-  m_LocalPosition: {x: 0, y: 1, z: -5}
+  m_LocalRotation: {x: -0.053408533, y: 0.21861888, z: 0.011984426, w: 0.974274}
+  m_LocalPosition: {x: -1.5035293, y: 1, z: -4.7685847}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5747,12 +5747,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollideAgainst:
     serializedVersion: 2
-    m_Bits: 193
+    m_Bits: 192
   IgnoreTag: 
   TransparentLayers:
     serializedVersion: 2
     m_Bits: 256
-  MinimumDistanceFromTarget: 0.3
+  MinimumDistanceFromTarget: 2
   AvoidObstacles:
     Enabled: 1
     DistanceLimit: 0
@@ -5989,7 +5989,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1464136780}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.05340853, y: 0.21861885, z: 0.011984424, w: 0.974274}
+  m_LocalRotation: {x: -0.05340851, y: 0.21861887, z: 0.011984418, w: 0.974274}
   m_LocalPosition: {x: -1.5035293, y: 1, z: -4.7685847}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6032,12 +6032,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollideAgainst:
     serializedVersion: 2
-    m_Bits: 193
+    m_Bits: 192
   IgnoreTag: 
   TransparentLayers:
     serializedVersion: 2
     m_Bits: 256
-  MinimumDistanceFromTarget: 0.3
+  MinimumDistanceFromTarget: 2
   AvoidObstacles:
     Enabled: 1
     DistanceLimit: 0
@@ -6076,7 +6076,7 @@ MonoBehaviour:
     Controllers:
     - Name: Look Orbit X
       Owner: {fileID: 1478301380}
-      Enabled: 1
+      Enabled: 0
       Input:
         InputAction: {fileID: -5630151704836100654, guid: 052faaac586de48259a63d0c4782560b, type: 3}
         Gain: 1
@@ -6194,7 +6194,7 @@ MonoBehaviour:
     SplineCurvature: 0.3
   RecenteringTarget: 3
   HorizontalAxis:
-    Value: 0
+    Value: 17.5
     Center: 17.5
     Range: {x: -180, y: 180}
     Wrap: 1
@@ -6207,7 +6207,7 @@ MonoBehaviour:
     Value: 17.5
     Center: 17.5
     Range: {x: -10, y: 45}
-    Wrap: 0
+    Wrap: 1
     Recentering:
       Enabled: 0
       Wait: 1
@@ -6274,8 +6274,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1478301375}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.056919493, y: -0.074254975, z: -0.0042452165, w: 0.9956045}
-  m_LocalPosition: {x: 0, y: 1, z: -5}
+  m_LocalRotation: {x: -0.059563834, y: 0.07814179, z: 0.004677109, w: 0.9951503}
+  m_LocalPosition: {x: -1.5035293, y: 1, z: -4.7685847}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
