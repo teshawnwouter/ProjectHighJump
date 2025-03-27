@@ -1,8 +1,9 @@
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class WallRun : MonoBehaviour
-{
+{ 
     #region Variables
     [Header("wallRunning")]
     public LayerMask whatIsWall;
@@ -20,16 +21,16 @@ public class WallRun : MonoBehaviour
     [Header("Refereces")]
     private Rigidbody rb;
     private PlayerMovement playerMovement;
-    private CinemachineCamera cam;
+    [SerializeField] private CinemachineCamera cam, camL, camR;
 
     [Header("WallJump")]
     private float wallJumpForce = 9f;
     private float wallSlideForce = 15f;
 
     [Header("exiting")]
-     private bool isExitingWall;
-     private float exitWallTime = 0.2f;
-     private float exitWallTimer;
+    private bool isExitingWall;
+    private float exitWallTime = 0.2f;
+    private float exitWallTimer;
 
     [Header("camPositions")]
     public Transform camLeft;
@@ -62,7 +63,7 @@ public class WallRun : MonoBehaviour
                 exitWallTimer -= Time.deltaTime;
             }
 
-            if(exitWallTimer <= 0)
+            if (exitWallTimer <= 0)
             {
                 isExitingWall = false;
             }
@@ -174,12 +175,23 @@ public class WallRun : MonoBehaviour
     /// </summary>
     private void CamAdjustment()
     {
-        if (wallRight) 
-        { 
-
-        }else
+        if (wallRight)
         {
-
+            camR.Priority = 1;
+            cam.Priority = 2;
+            camL.Priority = 3;
+        }
+        else if(wallLeft)
+        {
+            camL.Priority = 1;
+            camR.Priority = 2;
+            cam.Priority = 3;
+        }
+        else
+        {
+            cam.Priority = 1;
+            camL.Priority = 2;
+            camR.Priority = 3;
         }
 
     }
