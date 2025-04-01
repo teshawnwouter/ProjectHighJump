@@ -21,6 +21,7 @@ public class WallRun : MonoBehaviour
     [Header("Refereces")]
     private Rigidbody rb;
     private PlayerMovement playerMovement;
+    [SerializeField] private CameraScript camScript;
     [SerializeField] private CinemachineCamera cam, camL, camR;
 
     [Header("WallJump")]
@@ -178,18 +179,21 @@ public class WallRun : MonoBehaviour
     {
         if(wallLeft && AboveGround() && !wallRight)
         {
+            //camScript.camtarget = camRight;
             camR.Priority = 3;
             camL.Priority = 2;
             cam.Priority = 1;
         }
         else if(wallRight && AboveGround() && !wallLeft) 
         {
+            camScript.camtarget = camLeft;
             camL.Priority = 3;
             camR.Priority = 2;
             cam.Priority = 1;
         }
         else if (!wallLeft && !wallRight) 
         { 
+            camScript.camtarget = camLeft;
             cam.Priority = 3;
             camR.Priority = 2;
             camL.Priority = 1;

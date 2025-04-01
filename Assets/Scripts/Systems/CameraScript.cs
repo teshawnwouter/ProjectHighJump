@@ -1,10 +1,9 @@
-using Unity.Cinemachine;
 using UnityEngine;
 
 public class CameraScript : MonoBehaviour
 {
     [Header("Transform Objects")]
-    [SerializeField] private Transform camtarget;
+    public Transform camtarget;
     [SerializeField] private Transform oriantation;
     [SerializeField] private Transform player;
 

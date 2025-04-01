@@ -13,6 +13,7 @@ public class Pause : MonoBehaviour
     [SerializeField] private Swinging swinging;
     [SerializeField] private WallRun wallRun;
 
+    
     private void Update()
     {
         if (isPaused)
