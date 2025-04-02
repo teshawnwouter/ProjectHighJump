@@ -51,8 +51,6 @@ public class WallRun : MonoBehaviour
         WallChecker();
         StateMachine();
         CamAdjustment();
-
-        Debug.Log(AboveGround());
         if (isExitingWall)
         {
             if (playerMovement.wallRunning)
