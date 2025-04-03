@@ -526,7 +526,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.1
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 45
   orthographic: 0
@@ -3436,7 +3436,6 @@ RectTransform:
   - {fileID: 439235584}
   - {fileID: 821166277}
   - {fileID: 873971836}
-  - {fileID: 1351599081}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4731,7 +4730,7 @@ Transform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1322031023}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1351599082
 MonoBehaviour:
@@ -5278,7 +5277,6 @@ GameObject:
   - component: {fileID: 1406427813}
   - component: {fileID: 1406427812}
   - component: {fileID: 1406427811}
-  - component: {fileID: 1406427819}
   m_Layer: 0
   m_Name: FreeLook CameraWallRun
   m_TagString: Untagged
@@ -5301,11 +5299,11 @@ MonoBehaviour:
   CollideAgainst:
     serializedVersion: 2
     m_Bits: 192
-  IgnoreTag: 
+  IgnoreTag: Player
   TransparentLayers:
     serializedVersion: 2
     m_Bits: 256
-  MinimumDistanceFromTarget: 2
+  MinimumDistanceFromTarget: 1.25
   AvoidObstacles:
     Enabled: 1
     DistanceLimit: 0
@@ -5422,13 +5420,13 @@ MonoBehaviour:
   Radius: 10
   Orbits:
     Top:
-      Radius: 1
+      Radius: 2.5
       Height: 3
     Center:
       Radius: 5
       Height: 0
     Bottom:
-      Radius: 1
+      Radius: 2.5
       Height: -0.5
     SplineCurvature: 0.3
   RecenteringTarget: 3
@@ -5488,7 +5486,7 @@ MonoBehaviour:
   Lens:
     FieldOfView: 45
     OrthographicSize: 5
-    NearClipPlane: 0.1
+    NearClipPlane: 0.01
     FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
@@ -5533,36 +5531,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LookAtOffset: {x: 0, y: 0, z: 0}
---- !u!114 &1406427819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1406427810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca7de3aefa901374ba29464584a3109a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CameraRadius: 0.4
-  Decollision:
-    Enabled: 0
-    ObstacleLayers:
-      serializedVersion: 2
-      m_Bits: 1
-    UseFollowTarget:
-      Enabled: 0
-      YOffset: 0
-    Damping: 0.5
-    SmoothingTime: 0
-  TerrainResolution:
-    Enabled: 1
-    TerrainLayers:
-      serializedVersion: 2
-      m_Bits: 192
-    MaximumRaycast: 3
-    Damping: 0
 --- !u!43 &1441633048
 Mesh:
   m_ObjectHideFlags: 0
@@ -5770,7 +5738,7 @@ MonoBehaviour:
   TransparentLayers:
     serializedVersion: 2
     m_Bits: 256
-  MinimumDistanceFromTarget: 2
+  MinimumDistanceFromTarget: 1
   AvoidObstacles:
     Enabled: 1
     DistanceLimit: 2
@@ -6066,11 +6034,11 @@ MonoBehaviour:
   CollideAgainst:
     serializedVersion: 2
     m_Bits: 192
-  IgnoreTag: 
+  IgnoreTag: Player
   TransparentLayers:
     serializedVersion: 2
     m_Bits: 256
-  MinimumDistanceFromTarget: 2
+  MinimumDistanceFromTarget: 1
   AvoidObstacles:
     Enabled: 1
     DistanceLimit: 2
@@ -31324,7 +31292,7 @@ Transform:
   m_GameObject: {fileID: 1801922885}
   serializedVersion: 2
   m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -14.66, y: 2.48, z: -2.0999997}
+  m_LocalPosition: {x: -11.9, y: 2.48, z: -2.0999997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -56948,4 +56916,5 @@ SceneRoots:
   - {fileID: 1478301382}
   - {fileID: 1406427817}
   - {fileID: 1464136787}
+  - {fileID: 1351599081}
   - {fileID: 1322031023}
