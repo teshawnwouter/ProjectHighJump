@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 moveVector;
 
     [Header("jump")]
-    private float jumpForce = 20f;
+    private float jumpForce = 28f;
     private float airMultiPlier = 0.4f;
 
     [Header("Sprint")]

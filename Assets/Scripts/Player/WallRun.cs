@@ -72,8 +72,6 @@ public class WallRun : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log(wallLeft);
-        Debug.Log(wallRight);
         if (playerMovement.wallRunning)
         {
             WallRunning();
