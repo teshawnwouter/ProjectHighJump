@@ -9,13 +9,13 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 moveVector;
 
     [Header("jump")]
-    private float jumpForce = 18f;
+    private float jumpForce = 20f;
     private float airMultiPlier = 0.4f;
 
     [Header("Sprint")]
-    private float walkSpeed = 7f;
-    private float sprintSpeed = 14f;
-    public float wallRunSpeed = 12f;
+    private float walkSpeed = 15f;
+    private float sprintSpeed = 30f;
+    public float wallRunSpeed = 25f;
     private bool isSprinting;
 
     [Header("Restrictions")]
@@ -232,7 +232,7 @@ public class PlayerMovement : MonoBehaviour
     public void Onjump(InputAction.CallbackContext context)
     {
         if (isGrounded)
-            if (context.started)
+            if (context.performed)
             {
                 rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
 

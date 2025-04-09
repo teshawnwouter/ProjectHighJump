@@ -8,12 +8,12 @@ public class WallRun : MonoBehaviour
     [Header("wallRunning")]
     public LayerMask whatIsWall;
     public LayerMask whatIsGround;
-    private float wallRunForce = 18f;
+    private float wallRunForce = 28f;
 
     [Header("detections")]
     private RaycastHit leftWallHit;
     private RaycastHit rightWallHit;
-    private float wallCheckDist = 1f;
+    private float wallCheckDist = 2f;
     private float minJumpHeigt = 1.5f;
     private bool wallLeft;
     private bool wallRight;
@@ -72,6 +72,8 @@ public class WallRun : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Debug.Log(wallLeft);
+        Debug.Log(wallRight);
         if (playerMovement.wallRunning)
         {
             WallRunning();
