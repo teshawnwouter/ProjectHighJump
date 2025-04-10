@@ -1,9 +1,8 @@
 using Unity.Cinemachine;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class WallRun : MonoBehaviour
-{ 
+{
     #region Variables
     [Header("wallRunning")]
     public LayerMask whatIsWall;
@@ -22,7 +21,8 @@ public class WallRun : MonoBehaviour
     private Rigidbody rb;
     private PlayerMovement playerMovement;
     [SerializeField] private CameraScript camScript;
-    [SerializeField] private CinemachineCamera cam, camL, camR;
+    [SerializeField] private CinemachineCamera camL, camR;
+    private Animator animator;
 
     [Header("WallJump")]
     private float wallJumpForce = 9f;
@@ -36,7 +36,6 @@ public class WallRun : MonoBehaviour
     [Header("camPositions")]
     public Transform camLeft;
     public Transform camRight;
-
     #endregion
 
     #region runtime
@@ -44,13 +43,13 @@ public class WallRun : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         playerMovement = GetComponent<PlayerMovement>();
-        cam = FindFirstObjectByType<CinemachineCamera>();
+        animator = GetComponent<Animator>();
     }
     private void Update()
     {
+        CamAdjustment();
         WallChecker();
         StateMachine();
-        CamAdjustment();
         if (isExitingWall)
         {
             if (playerMovement.wallRunning)
@@ -68,6 +67,8 @@ public class WallRun : MonoBehaviour
                 isExitingWall = false;
             }
         }
+
+
     }
 
     private void FixedUpdate()
@@ -76,6 +77,16 @@ public class WallRun : MonoBehaviour
         {
             WallRunning();
         }
+        if (AboveGround())
+        {
+            animator.SetBool("WallLeft", wallLeft);
+            animator.SetBool("WallRight", wallRight);
+        }
+        else
+        {
+            animator.SetBool("WallLeft", false);
+            animator.SetBool("WallRight", false);
+        }
     }
     #endregion
 
@@ -83,7 +94,7 @@ public class WallRun : MonoBehaviour
     private void WallChecker()
     {
         wallRight = Physics.Raycast(transform.position, transform.right, out rightWallHit, wallCheckDist, whatIsWall);
-        wallLeft = Physics.Raycast(transform.position, -transform.right, out leftWallHit, wallCheckDist, whatIsWall);
+        wallLeft = Physics.Raycast(transform.position, -transform.right, out leftWallHit, wallCheckDist * 2, whatIsWall);
     }
 
     private bool AboveGround()
@@ -175,29 +186,24 @@ public class WallRun : MonoBehaviour
     /// </summary>
     private void CamAdjustment()
     {
-        if(wallLeft && AboveGround() && !wallRight)
+        if (wallLeft && !wallRight)
         {
-            //camScript.camtarget = camRight;
+            camScript.camtarget = camRight;
             camR.Priority = 3;
             camL.Priority = 2;
-            cam.Priority = 1;
         }
-        else if(wallRight && AboveGround() && !wallLeft) 
+        else if (wallRight && !wallLeft)
         {
             camScript.camtarget = camLeft;
             camL.Priority = 3;
             camR.Priority = 2;
-            cam.Priority = 1;
         }
-        else if (!wallLeft && !wallRight) 
-        { 
-            camScript.camtarget = camLeft;
-            cam.Priority = 3;
-            camR.Priority = 2;
-            camL.Priority = 1;
+        else if (!wallLeft && !wallRight)
+        {
+            camScript.camtarget = camRight;
+            camR.Priority = 3;
+            camL.Priority = 2;
         }
-
-
     }
     #endregion
 }

@@ -14,10 +14,8 @@ public class Swinging : MonoBehaviour
     public Transform SwingHookPoint;
     public LayerMask SwingAble;
     private PlayerMovement pm;
-    private Rigidbody rb;
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
         pm = GetComponent<PlayerMovement>();
     }
 
@@ -70,7 +68,7 @@ public class Swinging : MonoBehaviour
 
         currentGrapplePos = Vector3.Lerp(currentGrapplePos, swingPoint, Time.deltaTime * 8f);
 
-        lineRenderer.SetPosition(0, transform.position);
+        lineRenderer.SetPosition(0, SwingHookPoint.position);
         lineRenderer.SetPosition(1, swingPoint);
     }
 

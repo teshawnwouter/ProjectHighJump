@@ -46,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
     private Transform cameraHolder;
     private WallRun wallRun;
     private Swinging swing;
+    private Animator animator;
 
     [Header("grapple")]
     public bool isGrappling;
@@ -62,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         swing = GetComponent<Swinging>();
         wallRun = GetComponent<WallRun>();
+        animator = GetComponent<Animator>();
         cameraHolder = Camera.main.transform;
     }
 
@@ -86,6 +88,10 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocity = Vector3.zero;
 
         }
+
+        animator.SetBool("Grounded", isGrounded);
+        animator.SetBool("IsSprinting",isSprinting);
+       
     }
 
     private void FixedUpdate()
@@ -144,16 +150,9 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (!wallRunning || !isGrappling)
-        {
-            if (moveVector != Vector2.zero)
-            {
-                float angle = Mathf.Atan2(moveVector.x, moveVector.y) * Mathf.Rad2Deg + cameraHolder.eulerAngles.y;
-                Quaternion rotation = Quaternion.Euler(0, angle, 0);
-                transform.localRotation = Quaternion.Slerp(rb.rotation, rotation, rotationSpeed * Time.deltaTime);
-            }
-
-        }
+        Vector2 velicotyMove  =  new Vector2(rb.linearVelocity.x, rb.linearVelocity.z);
+        float velic = Mathf.Round(velicotyMove.magnitude * 100f) / 100f;
+        animator.SetFloat("Moving", velic);
 
         rb.useGravity = !OnSlope();
     }
@@ -251,7 +250,6 @@ public class PlayerMovement : MonoBehaviour
             swing.StopSwing();
             rb.linearVelocity = new Vector3(rb.linearVelocity.x,rb.linearVelocity.y + jumpForce,rb.linearVelocity.z);
         }
-
     }
     #endregion
 
