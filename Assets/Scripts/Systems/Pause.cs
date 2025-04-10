@@ -50,6 +50,11 @@ public class Pause : MonoBehaviour
         pauseScreen.SetActive(false);
     }
 
+    public void removePause()
+    {
+        isPaused = false;
+    }
+
     public void OnPause(InputAction.CallbackContext context)
     {
         if (context.performed)
