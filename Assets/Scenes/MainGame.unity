@@ -5454,6 +5454,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07395735ec72eb7409f0f372f8bbcf7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  credits: {fileID: 0}
+  main: {fileID: 0}
 --- !u!4 &1355600931 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 480390, guid: be11ab6aad4338d4d8ad965540935796, type: 3}
