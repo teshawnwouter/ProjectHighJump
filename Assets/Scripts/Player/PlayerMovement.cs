@@ -13,8 +13,8 @@ public class PlayerMovement : MonoBehaviour
     private float airMultiPlier = 0.4f;
 
     [Header("Sprint")]
-    private float walkSpeed = 7f;
-    private float sprintSpeed = 10f;
+    private float walkSpeed = 15f;
+    private float sprintSpeed = 30f;
     public float wallRunSpeed = 25f;
     private bool isSprinting;
 
@@ -74,14 +74,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-       
-    }
-
-    private void FixedUpdate()
-    {
-        isGrounded = Physics.CheckSphere(transform.position + Vector3.down * 0.5f, 0.5f, whatIsGround);
-
-
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeigt * 0.5f + 0.2f, whatIsGround);
         if (isGrounded && !isGrappling)
         {
             rb.linearDamping = drag;
@@ -98,10 +91,14 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetBool("Grounded", isGrounded);
         animator.SetBool("IsSprinting",isSprinting);
+       
+    }
 
+    private void FixedUpdate()
+    {
         if (!wallRunning || !isGrappling)
         {
-            rb.AddForce(Physics.gravity * gravityScale * rb.mass * 0.9f);
+            rb.AddForce(Physics.gravity * gravityScale * rb.mass);
 
         }
 
@@ -144,11 +141,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (!isSprinting)
                 {
-                    rb.AddForce(move.normalized * walkSpeed * airMultiPlier * 2, ForceMode.Force);
+                    rb.AddForce(move.normalized * walkSpeed * airMultiPlier * 10, ForceMode.Force);
                 }
                 else
                 {
-                    rb.AddForce(move.normalized * sprintSpeed * airMultiPlier * 2, ForceMode.Force);
+                    rb.AddForce(move.normalized * sprintSpeed * airMultiPlier * 10, ForceMode.Force);
                 }
             }
         }
@@ -212,9 +209,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isGrappling)
         {
-           
+            if (context.performed || context.canceled)
+            {
                 moveVector = context.ReadValue<Vector2>();
-         
+            }
         }
     }
 
