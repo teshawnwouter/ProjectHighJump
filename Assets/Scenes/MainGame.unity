@@ -121,7 +121,10 @@ NavMeshSettings:
   m_NavMeshData: {fileID: 0}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of f8baecb (Push)
 =======
 >>>>>>> parent of f8baecb (Push)
 --- !u!1 &23945186
@@ -1096,6 +1099,9 @@ CanvasRenderer:
   m_GameObject: {fileID: 228938248}
   m_CullTransparentMesh: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of f8baecb (Push)
+=======
 >>>>>>> parent of f8baecb (Push)
 =======
 >>>>>>> parent of f8baecb (Push)
@@ -1371,6 +1377,9 @@ Transform:
   m_PrefabInstance: {fileID: 1388098760}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of f8baecb (Push)
+=======
 >>>>>>> parent of f8baecb (Push)
 =======
 >>>>>>> parent of f8baecb (Push)
@@ -2015,6 +2024,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!43 &429313034
 Mesh:
   m_ObjectHideFlags: 0
@@ -2181,6 +2191,8 @@ Mesh:
     size: 0
     path: 
 =======
+=======
+>>>>>>> parent of f8baecb (Push)
 =======
 >>>>>>> parent of f8baecb (Push)
 --- !u!4 &437120969 stripped
@@ -2502,6 +2514,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &507444476
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of f8baecb (Push)
+=======
 >>>>>>> parent of f8baecb (Push)
 =======
 >>>>>>> parent of f8baecb (Push)
@@ -2512,6 +2527,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   - component: {fileID: 482541691}
@@ -2525,12 +2541,17 @@ GameObject:
 =======
 =======
 >>>>>>> parent of f8baecb (Push)
+=======
+>>>>>>> parent of f8baecb (Push)
   - component: {fileID: 507444477}
   - component: {fileID: 507444479}
   - component: {fileID: 507444478}
   m_Layer: 5
   m_Name: Text (TMP)
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of f8baecb (Push)
+=======
 >>>>>>> parent of f8baecb (Push)
 =======
 >>>>>>> parent of f8baecb (Push)
@@ -2541,8 +2562,11 @@ GameObject:
   m_IsActive: 1
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!114 &482541686
 =======
+=======
+>>>>>>> parent of f8baecb (Push)
 =======
 >>>>>>> parent of f8baecb (Push)
 --- !u!224 &507444477
@@ -2566,6 +2590,9 @@ RectTransform:
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &507444478
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of f8baecb (Push)
+=======
 >>>>>>> parent of f8baecb (Push)
 =======
 >>>>>>> parent of f8baecb (Push)
@@ -2574,6 +2601,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   m_GameObject: {fileID: 482541685}
@@ -2720,6 +2748,10 @@ MeshRenderer:
 =======
   m_GameObject: {fileID: 507444476}
   m_Enabled: 1
+=======
+  m_GameObject: {fileID: 507444476}
+  m_Enabled: 1
+>>>>>>> parent of f8baecb (Push)
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -2809,6 +2841,9 @@ CanvasRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
+>>>>>>> parent of f8baecb (Push)
+=======
 >>>>>>> parent of f8baecb (Push)
   m_GameObject: {fileID: 507444476}
   m_CullTransparentMesh: 1
@@ -2944,6 +2979,9 @@ Transform:
 --- !u!1 &584978442
 GameObject:
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of f8baecb (Push)
+=======
 >>>>>>> parent of f8baecb (Push)
 =======
 >>>>>>> parent of f8baecb (Push)
@@ -2951,6 +2989,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   m_GameObject: {fileID: 482541685}
@@ -2995,6 +3034,8 @@ GameObject:
 --- !u!114 &482541690
 MonoBehaviour:
 =======
+=======
+>>>>>>> parent of f8baecb (Push)
 =======
 >>>>>>> parent of f8baecb (Push)
   serializedVersion: 6
@@ -3074,6 +3115,9 @@ Transform:
 --- !u!1 &642555107
 GameObject:
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of f8baecb (Push)
+=======
 >>>>>>> parent of f8baecb (Push)
 =======
 >>>>>>> parent of f8baecb (Push)
@@ -3081,6 +3125,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   m_GameObject: {fileID: 482541685}
@@ -3379,6 +3424,48 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
 >>>>>>> parent of f8baecb (Push)
+=======
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 642555108}
+  - component: {fileID: 642555110}
+  - component: {fileID: 642555109}
+  m_Layer: 5
+  m_Name: Controlls
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &642555108
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642555107}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0400187, y: 1.0400187, z: 1.0400187}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 749243707}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 158, y: -233}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &642555109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642555107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+>>>>>>> parent of f8baecb (Push)
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -3631,11 +3718,142 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &770129734
 =======
 --- !u!1 &749243703
 =======
 --- !u!1 &749243703
+=======
+--- !u!1 &749243703
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 749243707}
+  - component: {fileID: 749243706}
+  - component: {fileID: 749243705}
+  - component: {fileID: 749243704}
+  - component: {fileID: 749243708}
+  m_Layer: 5
+  m_Name: Controlls
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &749243704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749243703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &749243705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749243703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &749243706
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749243703}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &749243707
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749243703}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 584978443}
+  - {fileID: 1614230380}
+  - {fileID: 1180561253}
+  - {fileID: 642555108}
+  - {fileID: 967624738}
+  - {fileID: 2139129864}
+  - {fileID: 1907815179}
+  - {fileID: 507444477}
+  - {fileID: 1537701673}
+  - {fileID: 23945187}
+  - {fileID: 228938249}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
+--- !u!114 &749243708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749243703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74529acc6e11c024db9b65fd15c7904b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pause: {fileID: 1322031019}
+  pausePause: {fileID: 1351599080}
+--- !u!1 &770551539
+>>>>>>> parent of f8baecb (Push)
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4327,6 +4545,9 @@ Transform:
   m_PrefabInstance: {fileID: 791684438}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of f8baecb (Push)
+=======
 >>>>>>> parent of f8baecb (Push)
 =======
 >>>>>>> parent of f8baecb (Push)
@@ -4498,7 +4719,10 @@ CanvasRenderer:
   m_CullTransparentMesh: 1
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of f8baecb (Push)
 =======
 >>>>>>> parent of f8baecb (Push)
 --- !u!4 &829569020 stripped
@@ -4507,6 +4731,9 @@ Transform:
   m_PrefabInstance: {fileID: 1865936272}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of f8baecb (Push)
+=======
 >>>>>>> parent of f8baecb (Push)
 =======
 >>>>>>> parent of f8baecb (Push)
@@ -4619,6 +4846,9 @@ PrefabInstance:
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f950e9a8a9dd2f469026a5b5e908c65, type: 3}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of f8baecb (Push)
+=======
 >>>>>>> parent of f8baecb (Push)
 =======
 >>>>>>> parent of f8baecb (Push)
@@ -5378,6 +5608,7 @@ CanvasRenderer:
   m_CullTransparentMesh: 1
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!43 &1127791586
 Mesh:
   m_ObjectHideFlags: 0
@@ -5550,6 +5781,9 @@ Mesh:
 =======
 --- !u!1 &1180561252
 >>>>>>> parent of f8baecb (Push)
+=======
+--- !u!1 &1180561252
+>>>>>>> parent of f8baecb (Push)
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5557,6 +5791,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   - component: {fileID: 1144937306}
@@ -5570,12 +5805,17 @@ GameObject:
 =======
 =======
 >>>>>>> parent of f8baecb (Push)
+=======
+>>>>>>> parent of f8baecb (Push)
   - component: {fileID: 1180561253}
   - component: {fileID: 1180561255}
   - component: {fileID: 1180561254}
   m_Layer: 5
   m_Name: title
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of f8baecb (Push)
+=======
 >>>>>>> parent of f8baecb (Push)
 =======
 >>>>>>> parent of f8baecb (Push)
@@ -5586,9 +5826,12 @@ GameObject:
   m_IsActive: 1
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!114 &1144937301
 MonoBehaviour:
 =======
+=======
+>>>>>>> parent of f8baecb (Push)
 =======
 >>>>>>> parent of f8baecb (Push)
 --- !u!224 &1180561253
@@ -5598,6 +5841,7 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   m_GameObject: {fileID: 1144937300}
@@ -5924,11 +6168,16 @@ Transform:
 =======
 =======
 >>>>>>> parent of f8baecb (Push)
+=======
+>>>>>>> parent of f8baecb (Push)
   m_GameObject: {fileID: 1180561252}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.2726, y: 2.2726, z: 2.2726}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of f8baecb (Push)
+=======
 >>>>>>> parent of f8baecb (Push)
 =======
 >>>>>>> parent of f8baecb (Push)
@@ -5938,7 +6187,10 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of f8baecb (Push)
 =======
 >>>>>>> parent of f8baecb (Push)
   m_AnchorMin: {x: 0.5, y: 1}
@@ -6051,6 +6303,9 @@ Transform:
   m_PrefabInstance: {fileID: 1733747681}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of f8baecb (Push)
+=======
 >>>>>>> parent of f8baecb (Push)
 =======
 >>>>>>> parent of f8baecb (Push)
@@ -6292,6 +6547,9 @@ Transform:
   m_Father: {fileID: 75250191}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of f8baecb (Push)
+=======
 >>>>>>> parent of f8baecb (Push)
 =======
 >>>>>>> parent of f8baecb (Push)
@@ -6409,6 +6667,9 @@ Transform:
   m_PrefabInstance: {fileID: 1643699704}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of f8baecb (Push)
+=======
 >>>>>>> parent of f8baecb (Push)
 =======
 >>>>>>> parent of f8baecb (Push)
@@ -7686,6 +7947,9 @@ MonoBehaviour:
   controllScreen: 0
   controlls: {fileID: 749243703}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of f8baecb (Push)
+=======
 >>>>>>> parent of f8baecb (Push)
 =======
 >>>>>>> parent of f8baecb (Push)
@@ -7755,6 +8019,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   m_GameObject: {fileID: 1370132306}
@@ -8070,6 +8335,8 @@ MonoBehaviour:
 --- !u!4 &1370132312
 Transform:
 =======
+=======
+>>>>>>> parent of f8baecb (Push)
 =======
 >>>>>>> parent of f8baecb (Push)
 --- !u!1001 &1385191623
@@ -8493,6 +8760,9 @@ Transform:
   m_PrefabInstance: {fileID: 305063105}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of f8baecb (Push)
+=======
 >>>>>>> parent of f8baecb (Push)
 =======
 >>>>>>> parent of f8baecb (Push)
@@ -8500,6 +8770,7 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 383e8335e990eb449b8cc716ade5116b, type: 3}
   m_PrefabInstance: {fileID: 173186058}
+<<<<<<< HEAD
 <<<<<<< HEAD
   m_PrefabAsset: {fileID: 0}
 --- !u!65 &1439308192
@@ -8528,6 +8799,8 @@ SpringJoint:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
+=======
+>>>>>>> parent of f8baecb (Push)
 =======
 >>>>>>> parent of f8baecb (Push)
   m_PrefabAsset: {fileID: 0}
@@ -9792,9 +10065,12 @@ Transform:
   serializedVersion: 2
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_LocalRotation: {x: -0.037476677, y: 0.15201402, z: 0.005768212, w: 0.98765075}
   m_LocalPosition: {x: -2.3635292, y: 2.42, z: -4.7685847}
 =======
+=======
+>>>>>>> parent of f8baecb (Push)
 =======
 >>>>>>> parent of f8baecb (Push)
   m_LocalRotation: {x: -0.03747666, y: 0.15201403, z: 0.005768209, w: 0.98765075}
@@ -9835,6 +10111,7 @@ MonoBehaviour:
       m_Bits: 192
     MaximumRaycast: 3
     Damping: 0
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!43 &1535153283
@@ -10003,6 +10280,8 @@ Mesh:
     size: 0
     path: 
 =======
+=======
+>>>>>>> parent of f8baecb (Push)
 =======
 >>>>>>> parent of f8baecb (Push)
 --- !u!1001 &1484284936
@@ -10302,6 +10581,9 @@ Transform:
   m_PrefabInstance: {fileID: 382093882}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of f8baecb (Push)
+=======
 >>>>>>> parent of f8baecb (Push)
 =======
 >>>>>>> parent of f8baecb (Push)
@@ -10338,7 +10620,11 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &1603276766
+=======
+--- !u!1 &1614230379
+>>>>>>> parent of f8baecb (Push)
 =======
 --- !u!1 &1614230379
 >>>>>>> parent of f8baecb (Push)
@@ -10350,6 +10636,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
 <<<<<<< HEAD
+<<<<<<< HEAD
   - component: {fileID: 1603276767}
   - component: {fileID: 1603276772}
   - component: {fileID: 1603276771}
@@ -10359,12 +10646,17 @@ GameObject:
   m_Layer: 7
   m_Name: Curved wall
 =======
+=======
+>>>>>>> parent of f8baecb (Push)
   - component: {fileID: 1614230380}
   - component: {fileID: 1614230383}
   - component: {fileID: 1614230382}
   - component: {fileID: 1614230381}
   m_Layer: 5
   m_Name: Button
+<<<<<<< HEAD
+>>>>>>> parent of f8baecb (Push)
+=======
 >>>>>>> parent of f8baecb (Push)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10372,12 +10664,18 @@ GameObject:
   m_StaticEditorFlags: 0
   m_IsActive: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!4 &1603276767
 Transform:
+=======
+--- !u!224 &1614230380
+RectTransform:
+>>>>>>> parent of f8baecb (Push)
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1603276766}
   serializedVersion: 2
   m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
@@ -10388,11 +10686,29 @@ Transform:
   m_Father: {fileID: 1978481370}
   m_LocalEulerAnglesHint: {x: -90, y: -90, z: 0}
 --- !u!114 &1603276768
+=======
+  m_GameObject: {fileID: 1614230379}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.3524, y: 2.3524, z: 2.3524}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 144623227}
+  m_Father: {fileID: 749243707}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 70}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1614230381
+>>>>>>> parent of f8baecb (Push)
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1603276766}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -10522,6 +10838,10 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614230379}
+  m_Enabled: 1
+>>>>>>> parent of f8baecb (Push)
+=======
   m_GameObject: {fileID: 1614230379}
   m_Enabled: 1
 >>>>>>> parent of f8baecb (Push)
@@ -11036,6 +11356,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1814459637
 PrefabInstance:
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> parent of f8baecb (Push)
   m_ObjectHideFlags: 0
@@ -35255,6 +35576,8 @@ MeshFilter:
   m_Mesh: {fileID: 1535153283}
 --- !u!23 &1657579964
 MeshRenderer:
+=======
+>>>>>>> parent of f8baecb (Push)
 =======
 >>>>>>> parent of f8baecb (Push)
   m_ObjectHideFlags: 0
@@ -60580,6 +60903,9 @@ Transform:
   m_PrefabInstance: {fileID: 691149287}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of f8baecb (Push)
+=======
 >>>>>>> parent of f8baecb (Push)
 =======
 >>>>>>> parent of f8baecb (Push)
@@ -61203,8 +61529,13 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!43 &2040545331
 Mesh:
+=======
+--- !u!1 &2040367249
+GameObject:
+>>>>>>> parent of f8baecb (Push)
 =======
 --- !u!1 &2040367249
 GameObject:
@@ -61217,6 +61548,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   m_Name: pb_Mesh-266190(Clone)(Clone)(Clone)(Clone)
@@ -61382,6 +61714,8 @@ GameObject:
 =======
 =======
 >>>>>>> parent of f8baecb (Push)
+=======
+>>>>>>> parent of f8baecb (Push)
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2040367250}
@@ -61521,6 +61855,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2110001888
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> parent of f8baecb (Push)
 GameObject:
   m_ObjectHideFlags: 0
@@ -61600,6 +61935,8 @@ MeshFilter:
 --- !u!23 &2054031817
 MeshRenderer:
 =======
+=======
+>>>>>>> parent of f8baecb (Push)
 GameObject:
 >>>>>>> parent of f8baecb (Push)
   m_ObjectHideFlags: 0
@@ -61920,7 +62257,10 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of f8baecb (Push)
 =======
 >>>>>>> parent of f8baecb (Push)
 --- !u!1 &2139129863
@@ -62146,6 +62486,9 @@ SceneRoots:
   - {fileID: 353962166}
   - {fileID: 749243707}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of f8baecb (Push)
+=======
 >>>>>>> parent of f8baecb (Push)
 =======
 >>>>>>> parent of f8baecb (Push)
