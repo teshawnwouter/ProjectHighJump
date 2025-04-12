@@ -72,11 +72,6 @@ public class PlayerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    private void Update()
-    {
-       
-    }
-
     private void FixedUpdate()
     {
         isGrounded = Physics.CheckSphere(transform.position + Vector3.down * 0.5f, 0.5f, whatIsGround);
@@ -109,22 +104,6 @@ public class PlayerMovement : MonoBehaviour
         move = cameraHolder.forward * move.z + cameraHolder.right * move.x;
         move.y = 0;
 
-        if (OnSlope())
-        {
-            if (!isSprinting)
-            {
-                rb.AddForce(GetSlopeDir() * walkSpeed * 10, ForceMode.Force);
-                if (rb.linearVelocity.y > 0)
-                {
-                    rb.AddForce(Vector3.down * slide, ForceMode.Force);
-                }
-            }
-            else
-            {
-                rb.AddForce(GetSlopeDir() * sprintSpeed * 10, ForceMode.Force);
-            }
-        }
-
         //on Ground
         if (isGrounded)
         {
@@ -156,8 +135,6 @@ public class PlayerMovement : MonoBehaviour
         Vector2 velicotyMove  =  new Vector2(rb.linearVelocity.x, rb.linearVelocity.z);
         float velic = Mathf.Round(velicotyMove.magnitude * 100f) / 100f;
         animator.SetFloat("Moving", velic);
-
-        rb.useGravity = !OnSlope();
     }
     #endregion
 
@@ -187,23 +164,6 @@ public class PlayerMovement : MonoBehaviour
         velocityToSet = CalculateJumpVelocity(transform.position, targetPosition, trajectoryHeight);
         Invoke(nameof(SetVelocity), 0.1f);
 
-    }
-    #endregion
-
-    #region Slope
-    private bool OnSlope()
-    {
-        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeigt * 0.5f + 0.3f))
-        {
-            float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
-            return angle < slopeAngle && angle != 0;
-        }
-        return false;
-    }
-
-    private Vector3 GetSlopeDir()
-    {
-        return Vector3.ProjectOnPlane(moveVector, slopeHit.normal).normalized;
     }
     #endregion
 

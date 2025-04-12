@@ -5,7 +5,9 @@ public class Pause : MonoBehaviour
 {
     [Header("Pause variables")]
     public bool isPaused = false;
+    private bool inControlls;
     [SerializeField] private GameObject pauseScreen;
+    [SerializeField] private GameObject controlls;
 
     [Header("refreances")]
     [SerializeField] private PlayerMovement playerMovement;
@@ -16,11 +18,11 @@ public class Pause : MonoBehaviour
     
     private void Update()
     {
-        if (isPaused)
+        if (isPaused && !inControlls)
         {
             Paused();
         }
-        else
+        else if (!isPaused && !inControlls) 
         {
             UnPause();
         }
@@ -68,6 +70,19 @@ public class Pause : MonoBehaviour
                 isPaused = true;
             }
         }
+    }
 
+    public void Contolls()
+    {
+        inControlls = true;
+        pauseScreen.SetActive(false);
+        controlls.SetActive(true);
+    }
+
+    public void BackFromContolls()
+    {
+        inControlls = false;
+        pauseScreen.SetActive(true);
+        controlls.SetActive(false);
     }
 }
