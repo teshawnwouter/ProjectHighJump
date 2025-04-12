@@ -7721,11 +7721,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07395735ec72eb7409f0f372f8bbcf7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
 --- !u!1 &1370132306
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
+=======
+--- !u!4 &1355600931 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 480390, guid: be11ab6aad4338d4d8ad965540935796, type: 3}
+  m_PrefabInstance: {fileID: 344953428}
+>>>>>>> parent of 35306ef (last adjustment)
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
