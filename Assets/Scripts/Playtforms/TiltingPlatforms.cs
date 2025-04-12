@@ -34,6 +34,7 @@ public class TiltingPlatforms : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(shouldPlatformRotate);
         if (shouldPlatformRotate)
         {
             Vector3 playerPos = transform.InverseTransformPoint(player.position);
