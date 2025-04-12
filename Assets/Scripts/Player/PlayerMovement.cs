@@ -212,10 +212,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isGrappling)
         {
-            if (context.performed || context.canceled)
-            {
+           
                 moveVector = context.ReadValue<Vector2>();
-            }
+         
         }
     }
 
