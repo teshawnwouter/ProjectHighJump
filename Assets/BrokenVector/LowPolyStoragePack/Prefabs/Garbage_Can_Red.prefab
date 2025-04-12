@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 455176}
   - component: {fileID: 3382484}
   - component: {fileID: 2315220}
-  - component: {fileID: 6463996}
-  m_Layer: 0
+  - component: {fileID: 2578826667360663673}
+  m_Layer: 6
   m_Name: Garbage_Can_Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,8 +87,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6463996
-MeshCollider:
+--- !u!65 &2578826667360663673
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -105,7 +105,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: f4169bae00484c948a2b9d782b10b298, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.56, y: 0.95000005, z: 0.5}
+  m_Center: {x: 0.032333404, y: -0.027066603, z: -0.0000005066395}

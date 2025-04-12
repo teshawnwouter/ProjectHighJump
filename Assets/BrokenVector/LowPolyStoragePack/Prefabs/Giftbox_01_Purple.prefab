@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 401422}
   - component: {fileID: 3335416}
   - component: {fileID: 2356804}
-  - component: {fileID: 6476350}
-  m_Layer: 0
+  - component: {fileID: 1609027675633606797}
+  m_Layer: 6
   m_Name: Giftbox_01_Purple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,8 +87,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6476350
-MeshCollider:
+--- !u!65 &1609027675633606797
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -105,7 +105,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 601dc9ecbb324ed488aeceaf99509326, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.31558472, y: 0.3083824, z: 0.23376179}
+  m_Center: {x: -0.00042585284, y: 0.0404044, z: -0.00029459968}
